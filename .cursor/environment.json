@@ -1,0 +1,4 @@
+{
+  "install": "echo 'InD work env ready'",
+  "start": "echo 'Cloud agent started on InD-work-env'"
+}
