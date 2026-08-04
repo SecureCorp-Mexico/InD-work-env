@@ -1,0 +1,47 @@
+{
+  "diag": {
+    "href": "https://172.20.0.9/login.html",
+    "redirected": "/login.html",
+    "bodyH": 469,
+    "topbar": null,
+    "mapWrap": null,
+    "map": null,
+    "canvas": {
+      "exists": false
+    },
+    "loadingDisplay": null,
+    "scripts": [
+      "login-CCGxLnwY.js"
+    ],
+    "mapChildren": null
+  },
+  "consoleMsgs": [
+    {
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 401 (Unauthorized)"
+    },
+    {
+      "type": "pageerror",
+      "text": "sesión expirada"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 401 (Unauthorized)"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 401 (Unauthorized)"
+    }
+  ],
+  "failed": [
+    {
+      "url": "https://172.20.0.9/login.html",
+      "err": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://172.20.0.9/login.html",
+      "err": "net::ERR_ABORTED"
+    }
+  ],
+  "tileReqs": []
+}

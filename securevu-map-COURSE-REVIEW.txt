@@ -1,0 +1,204 @@
+CURSO ODOO — SecureVu Map — Operación y Administración
+
+En el editor: Cmd+A luego Cmd+C para copiar todo.
+
+========================================================================
+ARTÍCULOS
+========================================================================
+
+[Introducción] ¿Qué es SecureVu Map?
+----------------------------------------
+¿Qué es SecureVu Map?
+SecureVu Map es el mapa de monitoreo de las cámaras de videovigilancia. Muestra cada cámara, su estado en vivo (en línea / en espera / fuera), el video en tiempo real, la disponibilidad histórica y las alarmas SOS y Tamper de cada sitio. Opción 3D de edificios en la barra.
+
+- Usuario: monitorea (mapa, popups, videowall, alarmas, asistente; PTZ si se autoriza).
+- Admin: además configura servidores, coordenadas, usuarios/ACL, auditoría e integraciones. Lo marcado con Admin es solo para administradores.
+
+Guía in-app: /guia.html (icono ❓).
+
+[Introducción] Acceso y roles
+----------------------------------------
+Acceso y roles
+Abre la dirección de la app:
+
+- https://mh.map.secure.vu/
+- https://172.20.0.9/
+
+Usuario/contraseña → Entrar. Si está activado: Continuar con Microsoft o Google (primera vez SSO = pendiente de aprobación).
+
+ | Rol | Puede
+
+ | Usuario | Mapa, video, disponibilidad, alarmas, videowall y asistente; puede estar restringido por PMI/cámara.
+
+ | Admin | Todo lo anterior + Administración (incluye «Regresar a Mapa» e impersonar Usuarios).
+
+¿Olvidaste la contraseña? Un Admin tendrá que restablecerla en Administración → Usuarios. Cuenta local: menú de perfil.
+
+[Uso (Usuario)] El mapa y los marcadores
+----------------------------------------
+El mapa y los marcadores
+Cada marcador es un sitio/PMI. El color resume el estado:
+
+- 🟢 Verde: en línea (sesión SecureVu activa).
+- 🟠 Ámbar: en espera (el video suele abrir al elegir la cámara).
+- 🔴 Rojo: fuera de línea.
+- ⚪ Gris: sin transmisión.
+
+Varias cámaras → número en el marcador. Color del grupo = peor estado por mayoría. Interruptor 3D = edificios.
+
+[Uso (Usuario)] Popups flotantes y listado de cámaras
+----------------------------------------
+Popups flotantes y listado de cámaras
+Al hacer clic se abre un popup flotante (puedes abrir varios; Popups ✕ cierra todos). El título es el enlace SecureVu.
+
+- Listado de cámaras (derecha): iconos por tipo con punto de estado; colapsado/expandido; cambia cámara del mismo PMI.
+- Grabación servidor · 24 h y Grabación en PMI · 24 h (menú colapsable); clic abre SecureVu o la web de la cámara.
+- 🔇 audio (esquina inferior izquierda); ⛶ HD|SD ↻ en la transmisión.
+- Casilla Videowall → PMI completo; botón VW en la barra.
+
+[Uso (Usuario)] Videowall
+----------------------------------------
+Videowall
+Casilla Videowall o Agregar una vez en la pantalla de videowall. Baldosas: punto de estado, HD|SD, silenciar, pantalla completa, PTZ y ×. Marcos: Rojo SOS / Morado Tamper / Combinado. ← Mapa regresa.
+
+[Uso (Usuario)] Estadísticas de disponibilidad
+----------------------------------------
+Estadísticas de disponibilidad
+Clic en los contadores de la barra. Periodos: Hoy / 7 días / Mes / Periodo. Tabla por servidor con nombres de proyecto. Hoy cubre desde la medianoche (hora CDMX) hasta el momento del clic.
+
+[Uso (Usuario)] Alarmas SOS / Tamper
+----------------------------------------
+Alarmas SOS / Tamper
+Marcador pulsante (rojo SOS / morado Tamper). Sonido: SOS = secuencia urgente; Tamper = tono suave; el altavoz del panel silencia ambos.
+
+Estados ACTIVA → RECONOCIDA → RESUELTA. Acciones: Reconocer, Resolver, Nota, Ver cámaras, Grabación. Ventana aparte. Ticket FreshService automático (SOS = Urgente, Tamper = Alta). Cada acción queda en bitácora y Auditoría.
+
+[Uso (Usuario)] PTZ e Intercom Hablar
+----------------------------------------
+PTZ e Intercom Hablar
+PTZ: Control disponible → Controlando → flechas / + − (d-pad en pantalla completa). Solo una cámara a la vez. Admin siempre; Usuario requiere autorización del Admin. El mapa usa el control de SecureVu; cualquier cámara puede ser controlada.
+
+Hablar: botón junto al PTZ; llama al intercomunicador del PMI. Requiere extensión de operador; deshabilitado hasta que el Admin la asigne.
+
+[Uso (Usuario)] Asistente operativo
+----------------------------------------
+Asistente operativo
+El botón 💬 abre el asistente. Pregunta en cualquier idioma. Además del texto puede mostrar tarjetas (KPI, barras, tablas) de estado, alarmas o actividad.
+
+Ejemplos: «¿cuántas cámaras hay en línea?», «ubicación del PMI 469», «¿hubo SOS hoy?», «reporte de alarmas».
+
+[Administración] Servidores y descubrimiento
+----------------------------------------
+Servidores y descubrimiento
+En ⚙ Administración → Servidores agregas IPs SecureVu, guardas y usas «Descubrir cámaras y reconstruir mapa». Configura el Asistente IA y descarga la plantilla CSV. Desde la barra: Regresar a Mapa.
+
+[Administración] Coordenadas (ubicar cámaras)
+----------------------------------------
+Coordenadas (ubicar cámaras)
+Sube CSV/Excel; llave preferida = IP; lat/lng; grupo = PMI. Probar antes de Publicar. Si quedan 0 con coordenadas, revisa la columna llave.
+
+[Administración] Usuarios, ACL e impersonación
+----------------------------------------
+Usuarios, ACL e impersonación
+Roles UI Usuario / Admin. ACL por PMI y/o cámaras. Sin ACL = ve todo; lista vacía = sin acceso. Checkbox Control PTZ en Usuarios. Icono Entrar como impersona; banner Volver restaura al Admin. SSO: aprueba solicitudes pendientes.
+
+[Administración] Auditoría, alarmas y despliegue
+----------------------------------------
+Auditoría, alarmas y despliegue
+Pestaña Auditoría: log append-only con actor real + CSV. SecureTrax/FreshService desde Administración. Inventario PMI: routers/Hipervisores/cámaras. Asistente → Ver conversaciones.
+
+Despliegue MH: LXC 103, Docker Compose, ./deploy.sh. TLS preferido mh.map.secure.vu.
+
+========================================================================
+QUIZ / CERTIFICACIÓN (✓ = respuesta correcta)
+========================================================================
+
+1. ¿Qué significa un marcador ámbar en el mapa?
+   [ ] Todas las cámaras del sitio están en línea
+   [✓] En espera: el video suele abrir al elegir la cámara
+   [ ] El sitio no tiene cámaras
+   [ ] Hay una alarma SOS
+
+2. ¿Cómo se colorea el marcador de un sitio con varias cámaras?
+   [ ] Siempre verde
+   [✓] Peor estado por mayoría en el sitio
+   [ ] Solo por la primera cámara
+   [ ] Aleatorio
+
+3. ¿Dónde está el listado de cámaras en el popup?
+   [ ] Arriba del título
+   [✓] A la derecha del video (iconos colapsables)
+   [ ] Solo en Administración
+   [ ] En el basemap 3D
+
+4. ¿Qué diferencia el sonido de SOS y Tamper?
+   [ ] Es el mismo tono
+   [✓] SOS = secuencia urgente; Tamper = tono suave (ambos se pueden silenciar)
+   [ ] Solo SOS suena
+   [ ] Solo Tamper suena
+
+5. ¿Qué estados puede tener una alarma?
+   [ ] Nueva / Vieja
+   [✓] Activa / Reconocida / Resuelta
+   [ ] Abierta / Cerrada / Pendiente de pago
+   [ ] Verde / Rojo / Gris
+
+6. Al atender una alarma, ¿qué queda registrado?
+   [ ] Nada
+   [ ] Solo la hora
+   [✓] El usuario que actuó, la acción y la hora (Auditoría)
+   [ ] Solo si se resolvió
+
+7. ¿Qué hace la casilla Videowall del popup?
+   [ ] Apaga la cámara
+   [✓] Selecciona el PMI completo para el muro multi-cámara
+   [ ] Exporta un PDF
+   [ ] Reinicia el servidor
+
+8. En el selector de disponibilidad, ¿qué periodos hay?
+   [ ] Solo 24 horas
+   [✓] Hoy, 7 días, Mes y Periodo personalizado
+   [ ] Solo el mes actual
+   [ ] Año completo
+
+9. ¿Cómo descubre la app las cámaras de un servidor? (admin)
+   [ ] Hay que capturarlas a mano
+   [✓] Consulta el servidor y las encuentra solas al «Descubrir»
+   [ ] Las lee de un PDF
+   [ ] No puede, requiere reinstalar
+
+10. Si al publicar coordenadas quedan «0 con coordenadas», ¿qué revisar primero? (admin)
+   [ ] Reiniciar el navegador
+   [✓] La columna llave del mapeo (probar con la IP)
+   [ ] Cambiar de servidor de IA
+   [ ] Borrar todos los usuarios
+
+11. ¿Qué puede hacer un rol Usuario?
+   [ ] Configurar servidores y usuarios
+   [✓] Monitorear: mapa, video, alarmas, videowall y asistente (PTZ si se habilita)
+   [ ] Subir coordenadas
+   [ ] Eliminar cámaras
+
+12. ¿Para qué sirve «Entrar como» en Usuarios? (admin)
+   [ ] Borrar la cuenta
+   [✓] Abrir el mapa impersonando a ese Usuario (con Volver al Admin)
+   [ ] Cambiar el basemap a 3D
+   [ ] Silenciar alarmas
+
+13. ¿Qué usa el mapa para controlar cámaras PTZ?
+   [ ] Solo ISAPI en todas
+   [✓] Control SecureVu; cualquier cámara puede ser controlada
+   [ ] Solo el intercom Hablar
+   [ ] Publica el curso Odoo
+
+14. Sobre Hablar / Intercom, ¿cuál es correcto?
+   [ ] Siempre funciona para todos
+   [✓] Deshabilitado hasta que Admin asigne extensión de operador
+   [ ] Reemplaza al videowall
+   [ ] Solo funciona en 3D
+
+15. ¿En qué idiomas se puede preguntar al asistente?
+   [ ] Solo español
+   [✓] Cualquier idioma
+   [ ] Solo inglés
+   [ ] Solo con tarjetas KPI

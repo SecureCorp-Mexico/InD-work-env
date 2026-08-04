@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a0f1e" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="SecureVu Map" />
+  <!-- CT103 rollback to known-good 2c3fd42 — bust sticky v7 TDZ bundle -->
+  <meta name="svmap-build" content="v8-rollback-2c3fd42-20260728" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="/icon-192.png" />
+  <title>SecureVu Map</title>
+  <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+  <script type="module" crossorigin src="/assets/main-C4LWa_gW.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/modulepreload-polyfill-B5Qt9EMX.js">
+  <link rel="modulepreload" crossorigin href="/assets/api-R2ffBD2U.js">
+  <link rel="modulepreload" crossorigin href="/assets/pwa-CPGbWj3w.js">
+  <link rel="stylesheet" crossorigin href="/assets/api-BrILmmXd.css">
+  <link rel="stylesheet" crossorigin href="/assets/main-BQlc4wYO.css">
+</head>
+<body>
+
+  <div id="topbar">
+    <div id="logo">
+      <img src="/logo.svg" alt="SecureVu logo" id="logo-img" />
+      <span id="logo-text">SecureVu Map</span>
+    </div>
+    <button id="stats" title="Ver estadísticas de disponibilidad">
+      <span id="stat-total"></span>
+      <span id="stat-online" class="pill green"></span>
+      <span id="stat-standby" class="pill amber"></span>
+      <span id="stat-offline" class="pill red"></span>
+    </button>
+    <div id="filters">
+      <select id="filter-servidor"><option value="">Todos los servidores</option></select>
+      <select id="filter-tipo"><option value="">Todos los tipos</option></select>
+      <div id="search-wrap">
+        <input id="search" type="text" placeholder="Buscar cámara..." autocomplete="off" />
+        <button id="search-clear" class="hidden" title="Limpiar">&#x2715;</button>
+        <ul id="search-list" class="hidden"></ul>
+      </div>
+    </div>
+    <div id="userbar">
+      <span id="intercom-pill" class="pill muted hidden" title="Estado del intercom">IC</span>
+      <button id="alarm-bell" title="Alarmas SOS / Tamper">🔔<span id="alarm-badge" class="hidden">0</span></button>
+      <a id="help-link" href="/guia.html" target="_blank" rel="noopener" title="Ayuda / Guía de uso">❓</a>
+      <a id="admin-link" class="hidden" href="/admin.html" title="Administración">&#x2699;</a>
+      <span id="user-name"></span>
+      <button id="btn-logout" title="Cerrar sesión">Salir</button>
+    </div>
+  </div>
+
+  <div id="map-wrap">
+    <div id="map"></div>
+
+    <div id="panel" class="hidden">
+      <div id="panel-header">
+        <div id="panel-title-wrap">
+          <span id="panel-status-dot"></span>
+          <span id="panel-title"></span>
+        </div>
+        <button id="panel-close" title="Cerrar">&#x2715;</button>
+      </div>
+
+      <div id="panel-cameras" class="hidden"></div>
+
+      <div id="video-wrap">
+        <video id="cam-video" autoplay muted playsinline></video>
+        <img id="cam-mjpeg" class="hidden" alt="" />
+        <div id="video-msg" class="hidden"></div>
+        <div id="video-controls">
+          <button id="btn-mute" title="Activar/desactivar audio">&#x1F507;</button>
+          <button id="btn-fullscreen" title="Pantalla completa">&#x26F6;</button>
+          <button id="btn-retry" title="Reconectar">&#x21BA;</button>
+        </div>
+      </div>
+
+      <div id="cam-uptime">
+        <div id="uptime-head">
+          <span class="meta-key">Disponibilidad · 3 días</span>
+          <span id="uptime-pct"></span>
+        </div>
+        <div id="uptime-bar" title="Cada segmento = 1 hora"></div>
+        <div id="uptime-sub"></div>
+      </div>
+
+      <a id="cam-recording" class="hidden" href="#" target="_blank" rel="noopener" title="Abrir grabaciones en SecureVu">
+        <div id="rec-head">
+          <span class="meta-key">Grabación · 3 días</span>
+          <span id="rec-pct"></span>
+        </div>
+        <div id="rec-bar" title="Cada segmento = 1 hora de grabación · clic para abrir en SecureVu"></div>
+        <div id="rec-sub"></div>
+      </a>
+
+      <div id="intercom-box" class="hidden">
+        <button id="btn-intercom" class="primary" type="button">Hablar con PMI</button>
+        <button id="btn-intercom-hangup" class="hidden" type="button">Colgar</button>
+        <span id="intercom-msg" class="muted"></span>
+      </div>
+
+      <div id="cam-meta">
+        <div class="meta-row admin-only"><span class="meta-key">Grupo</span><span id="meta-grupo"></span></div>
+        <div class="meta-row admin-only"><span class="meta-key">Tipo</span><span id="meta-tipo"></span></div>
+        <div class="meta-row admin-only"><span class="meta-key">IP</span><span id="meta-ip"></span></div>
+        <div class="meta-row"><span class="meta-key">Servidor</span><span id="meta-server"></span></div>
+        <div class="meta-row admin-only"><span class="meta-key">Stream</span><span id="meta-stream"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Panel de alarmas SOS / Tamper (botón 🔔) -->
+  <div id="alarm-drawer" class="hidden">
+    <div id="alarm-head">
+      <span>🚨 Alarmas SecureTrax</span>
+      <div>
+        <select id="alarm-filter">
+          <option value="open">Abiertas</option>
+          <option value="active">Activas</option>
+          <option value="ack">Reconocidas</option>
+          <option value="resolved">Resueltas</option>
+          <option value="all">Todas</option>
+        </select>
+        <button id="alarm-close" title="Cerrar">&#x2715;</button>
+      </div>
+    </div>
+    <div id="alarm-list"></div>
+  </div>
+
+  <!-- Overview de disponibilidad (clic en los contadores de arriba) -->
+  <div id="stats-modal" class="hidden">
+    <div id="stats-card">
+      <div id="stats-modal-head">
+        <span>Disponibilidad de cámaras</span>
+        <button id="stats-close" title="Cerrar">&#x2715;</button>
+      </div>
+      <div id="stats-body"></div>
+    </div>
+  </div>
+
+  <button id="chat-fab" title="Asistente IA">💬</button>
+  <div id="chat-drawer" class="hidden">
+    <div id="chat-header">
+      <span>🤖 Asistente de eventos</span>
+      <div>
+        <button id="chat-clear" title="Nueva conversación">⟲</button>
+        <button id="chat-close" title="Cerrar">&#x2715;</button>
+      </div>
+    </div>
+    <div id="chat-messages">
+      <div class="chat-msg bot">Hola, puedo buscar entre los eventos detectados por las cámaras.
+Pregúntame, por ejemplo: «¿cuántas personas se detectaron hoy?» o «¿qué cámara tuvo más actividad anoche?»</div>
+    </div>
+    <form id="chat-form">
+      <textarea id="chat-input" rows="1" placeholder="Pregunta sobre los eventos…" autocomplete="off"></textarea>
+      <button type="submit" id="chat-send" title="Enviar">➤</button>
+    </form>
+  </div>
+
+  <div id="loading">
+    <div id="loading-spinner"></div>
+    <div id="loading-text">Cargando cámaras…</div>
+  </div>
+
+</body>
+</html>

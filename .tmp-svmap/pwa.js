@@ -1,0 +1,1 @@
+function o(){if(!("serviceWorker"in navigator))return;const e=()=>navigator.serviceWorker.register("/sw.js",{scope:"/"}).catch(r=>console.warn("[pwa] SW no registrado:",r.message));document.readyState==="complete"?e():window.addEventListener("load",e)}export{o as r};

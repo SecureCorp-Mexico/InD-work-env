@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a0f1e" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="SecureVu Map" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="/icon-192.png" />
+  <title>SecureVu Map</title>
+  <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+  <script type="module" crossorigin src="/assets/main-CV-YIPxS.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/modulepreload-polyfill-B5Qt9EMX.js">
+  <link rel="modulepreload" crossorigin href="/assets/api-EE322n0I.js">
+  <link rel="modulepreload" crossorigin href="/assets/webrtc-DQ-E5z_7.js">
+  <link rel="modulepreload" crossorigin href="/assets/userMenu-Cy_nO03K.js">
+  <link rel="modulepreload" crossorigin href="/assets/impersonate-DK6t2g97.js">
+  <link rel="modulepreload" crossorigin href="/assets/alarms-C-Ix10cw.js">
+  <link rel="modulepreload" crossorigin href="/assets/pwa-DimygQmk.js">
+  <link rel="stylesheet" crossorigin href="/assets/api-DWSh29Cq.css">
+  <link rel="stylesheet" crossorigin href="/assets/main-BQlc4wYO.css">
+</head>
+<body>
+
+  <div id="topbar">
+    <div id="logo">
+      <img src="/logo.svg" alt="SecureVu logo" id="logo-img" />
+      <span id="logo-text">SecureVu Map</span>
+    </div>
+    <button id="stats" title="Ver estadísticas de disponibilidad">
+      <span id="stat-total"></span>
+      <span id="stat-online" class="pill green"></span>
+      <span id="stat-standby" class="pill amber"></span>
+      <span id="stat-offline" class="pill red"></span>
+      <span id="stat-traccar" class="pill hidden" title="Dispositivos SecureTrax" style="background:#dbeafe;color:#1e40af"></span>
+      <span id="stat-howen" class="pill" title="Pares Howen VSS + SecureTrax" style="background:#ede9fe;color:#5b21b6"></span>
+    </button>
+    <div id="filters">
+      <select id="filter-servidor"><option value="">Todos los servidores</option></select>
+      <select id="filter-tipo"><option value="">Todos los tipos</option></select>
+      <div id="search-wrap">
+        <button type="button" id="search-btn" aria-expanded="false" aria-controls="search-panel" title="Buscar cámaras">Buscar</button>
+        <div id="search-panel" class="hidden" role="dialog" aria-label="Buscar cámaras">
+          <div class="search-panel-head">
+            <input id="search" type="search" placeholder="Nombre de cámara…" autocomplete="off" />
+            <button type="button" id="search-clear" class="hidden" title="Limpiar">&#x2715;</button>
+          </div>
+          <ul id="search-list" class="hidden"></ul>
+        </div>
+      </div>
+    </div>
+    <div id="userbar">
+      <div id="sel-bar" class="hidden">
+        <span id="sel-count" title="Cámaras seleccionadas">0</span>
+        <button type="button" id="sel-videowall" title="Abrir Videowall">VW</button>
+        <button type="button" id="sel-clear" title="Limpiar selección">✕</button>
+      </div>
+      <button type="button" id="panels-clear" class="hidden" title="Cerrar todos los popups">Popups ✕</button>
+      <span id="intercom-pill" class="pill muted hidden" title="Estado del intercom">IC</span>
+      <button id="alarm-bell" title="Alarmas SOS / Tamper" aria-label="Alarmas">
+        <svg class="tb-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 22a2.5 2.5 0 0 0 2.45-2h-4.9A2.5 2.5 0 0 0 12 22zm7-6V11a7 7 0 1 0-14 0v5l-1.7 1.7A1 1 0 0 0 4 20h16a1 1 0 0 0 .7-1.7L19 16z"/></svg>
+        <span id="alarm-badge" class="hidden">0</span>
+      </button>
+      <a id="help-link" href="/guia.html" target="_blank" rel="noopener" title="Ayuda / Guía de uso" aria-label="Ayuda">
+        <svg class="tb-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 15a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5zm1.4-4.55-.2.15a1 1 0 0 1-1.4-1.4l.35-.25c.7-.5 1.15-.9 1.15-1.7a1.3 1.3 0 0 0-2.6 0 1 1 0 1 1-2 0 3.3 3.3 0 0 1 6.6 0c0 1.55-.9 2.45-1.9 3.2z"/></svg>
+      </a>
+      <a id="admin-link" class="hidden" href="/admin.html" title="Administración" aria-label="Administración">
+        <svg class="tb-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M19.14 12.94c.04-.31.06-.63.06-.94s-.02-.63-.06-.94l2.03-1.58a.5.5 0 0 0 .12-.64l-1.92-3.32a.5.5 0 0 0-.6-.22l-2.39.96a7.07 7.07 0 0 0-1.63-.94l-.36-2.54a.5.5 0 0 0-.5-.42h-3.84a.5.5 0 0 0-.5.42l-.36 2.54c-.58.23-1.12.54-1.63.94l-2.39-.96a.5.5 0 0 0-.6.22L2.71 8.84a.5.5 0 0 0 .12.64l2.03 1.58c-.04.31-.06.63-.06.94s.02.63.06.94L2.83 14.5a.5.5 0 0 0-.12.64l1.92 3.32c.14.24.43.34.68.22l2.39-.96c.5.4 1.05.71 1.63.94l.36 2.54c.05.24.26.42.5.42h3.84c.24 0 .45-.18.5-.42l.36-2.54c.58-.23 1.12-.54 1.63-.94l2.39.96c.25.12.54.02.68-.22l1.92-3.32a.5.5 0 0 0-.12-.64l-2.03-1.58zM12 15.5A3.5 3.5 0 1 1 12 8.5a3.5 3.5 0 0 1 0 7z"/></svg>
+      </a>
+      <div id="user-menu" class="user-menu"></div>
+    </div>
+  </div>
+
+  <div id="map-wrap">
+    <div id="map"></div>
+    <div id="panels-layer"></div>
+  </div>
+
+  <!-- Stub for global intercom pill state (feature often off); panels have own controls -->
+  <div id="intercom-box" class="hidden" aria-hidden="true">
+    <button id="btn-intercom" class="primary" type="button">Hablar con PMI</button>
+    <button id="btn-intercom-hangup" class="hidden" type="button">Colgar</button>
+    <span id="intercom-msg" class="muted"></span>
+  </div>
+
+  <template id="float-panel-tpl">
+    <div class="float-panel">
+      <div class="fp-header">
+        <div class="fp-title-wrap">
+          <span class="fp-status-dot dot"></span>
+          <span class="fp-title"></span>
+        </div>
+        <button type="button" class="fp-close" title="Cerrar">&#x2715;</button>
+      </div>
+
+      <div class="fp-body">
+        <div class="fp-video">
+          <video class="fp-video-el" autoplay muted playsinline></video>
+          <img class="fp-mjpeg hidden" alt="" />
+          <iframe class="fp-howen hidden" title="Howen VSS" allow="autoplay; fullscreen" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <div class="fp-video-msg hidden"></div>
+          <div class="fp-controls">
+            <button type="button" class="fp-quality" title="Calidad HD / SD" aria-label="Calidad HD / SD" data-quality="sd">
+              <span class="q-opt" data-q="hd">HD</span>
+              <span class="q-opt" data-q="sd">SD</span>
+            </button>
+            <button type="button" class="fp-fullscreen" title="Pantalla completa">&#x26F6;</button>
+            <button type="button" class="fp-retry" title="Reconectar">&#x21BA;</button>
+            <a class="fp-howen-open hidden" href="#" target="_blank" rel="noopener" title="Abrir Howen">↗</a>
+          </div>
+        </div>
+        <div class="fp-cameras hidden" title="Cámaras del PMI"></div>
+      </div>
+
+      <a class="fp-recording fp-rec-collapsed hidden" href="#" target="_blank" rel="noopener" title="Abrir Explore en SecureVu (esta cámara · últimas 24 h)">
+        <div class="fp-rec-head">
+          <span class="meta-key">Grabación<span class="fp-rec-window"> · 24 h</span></span>
+          <span class="fp-rec-head-right">
+            <span class="fp-rec-pct" title="Abrir Explore (24 h)"></span>
+            <span class="fp-rec-chevron" role="button" tabindex="0" aria-expanded="false" aria-label="Expandir u ocultar grabación" title="Expandir / ocultar Grabación (+ microSD)"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true" focusable="false"><path d="M2.5 4.25 L6 7.75 L9.5 4.25" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </span>
+        </div>
+        <div class="fp-rec-body">
+          <div class="fp-rec-bar" title="Cada segmento = 1 hora · clic → Explore esa hora; barra → últimas 24 h"></div>
+          <div class="fp-rec-sub"></div>
+        </div>
+      </a>
+
+      <a class="fp-recording fp-recording-edge fp-rec-collapsed hidden" href="#" target="_blank" rel="noopener" title="Web de la cámara (microSD local)">
+        <div class="fp-rec-head">
+          <span class="meta-key">microSD · 24 h</span>
+          <span class="fp-rec-head-right">
+            <span class="fp-rec-pct fp-edge-pct" title="Abrir web de la cámara"></span>
+          </span>
+        </div>
+        <div class="fp-rec-body">
+          <div class="fp-rec-bar fp-edge-bar" title="Grabación en la microSD de la cámara · cada segmento = 1 hora"></div>
+          <div class="fp-rec-sub fp-edge-sub"></div>
+        </div>
+      </a>
+
+      <div class="fp-footer">
+        <button type="button" class="fp-mute" title="Audio">&#x1F507;</button>
+        <span class="fp-meta-line"></span>
+        <!-- PTZ pill injects here (before intercom). Order: meta · Control… · Hablar · Videowall -->
+        <button type="button" class="fp-intercom-pill ptz-pill hidden" aria-label="Hablar" title="Intercom">Hablar</button>
+        <label class="fp-select" title="Añadir todas las cámaras del PMI al Videowall">
+          <input type="checkbox" class="fp-select-cb" aria-label="Videowall" />
+          <span>Videowall</span>
+        </label>
+      </div>
+    </div>
+  </template>
+
+  <!-- Panel de alarmas SOS / Tamper (botón 🔔) -->
+  <div id="alarm-drawer" class="hidden">
+    <div id="alarm-head">
+      <span>🚨 Alarmas SecureTrax</span>
+      <div>
+        <select id="alarm-filter">
+          <option value="open">Abiertas</option>
+          <option value="active">Activas</option>
+          <option value="ack">Reconocidas</option>
+          <option value="resolved">Resueltas</option>
+          <option value="all">Todas</option>
+        </select>
+        <button type="button" id="alarm-sound-toggle" title="Sonido de alarma: activo (clic para silenciar)" aria-pressed="false" aria-label="Silenciar sonido de alarma"><svg class="alarm-sound-ico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round" stroke-linecap="round" d="M5 9.25h2.9L12 5.2v13.6l-4.1-4.05H5z"/><path fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" d="M15.1 9.1a3.1 3.1 0 0 1 0 5.8"/><path fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" d="M17.55 6.7a6.1 6.1 0 0 1 0 10.6"/></svg></button>
+        <button id="alarm-popout" title="Abrir en ventana aparte">↗</button>
+        <button id="alarm-close" title="Cerrar">&#x2715;</button>
+      </div>
+    </div>
+    <p id="alarm-popped-hint" class="hidden">Abierto en otra ventana · <button type="button" id="alarm-popout-reopen" class="linkish">Reabrir</button></p>
+    <div id="alarm-list"></div>
+  </div>
+
+  <!-- Overview de disponibilidad (clic en los contadores de arriba) -->
+  <div id="stats-modal" class="hidden">
+    <div id="stats-card">
+      <div id="stats-modal-head">
+        <span>Disponibilidad de cámaras</span>
+        <button id="stats-close" title="Cerrar">&#x2715;</button>
+      </div>
+      <div id="stats-body"></div>
+    </div>
+  </div>
+
+  <button id="chat-fab" title="Asistente IA">💬</button>
+  <div id="chat-drawer" class="hidden">
+    <div id="chat-header">
+      <span>🤖 Asistente de eventos</span>
+      <div>
+        <button id="chat-clear" title="Nueva conversación">⟲</button>
+        <button id="chat-close" title="Cerrar">&#x2715;</button>
+      </div>
+    </div>
+    <div id="chat-messages">
+      <div class="chat-msg bot">Hola, puedo buscar entre los eventos detectados por las cámaras.
+Pregúntame, por ejemplo: «¿cuántas personas se detectaron hoy?» o «¿qué cámara tuvo más actividad anoche?»</div>
+    </div>
+    <form id="chat-form">
+      <textarea id="chat-input" rows="1" placeholder="Pregunta sobre los eventos…" autocomplete="off"></textarea>
+      <button type="submit" id="chat-send" title="Enviar">➤</button>
+    </form>
+  </div>
+
+  <div id="loading">
+    <div id="loading-spinner"></div>
+    <div id="loading-text">Cargando dispositivos…</div>
+  </div>
+
+  <!-- Classic (non-module) fail-safe: runs even if ES modules / MapLibre hang. -->
+  <script>
+  (function () {
+    function clearCachesAndReload() {
+      var done = function () { location.reload(); };
+      var chain = Promise.resolve();
+      if (navigator.serviceWorker) {
+        chain = chain.then(function () {
+          return navigator.serviceWorker.getRegistrations();
+        }).then(function (regs) {
+          return Promise.all(regs.map(function (r) { return r.unregister(); }));
+        });
+      }
+      if (window.caches) {
+        chain = chain.then(function () { return caches.keys(); }).then(function (keys) {
+          return Promise.all(keys.map(function (k) { return caches.delete(k); }));
+        });
+      }
+      chain.finally(done);
+    }
+    window.__svmapHideLoading = function () {
+      var el = document.getElementById('loading');
+      if (!el) return;
+      el.setAttribute('data-ok', '1');
+      el.style.display = 'none';
+    };
+    window.__svmapShowLoadError = function (msg) {
+      var el = document.getElementById('loading');
+      if (!el || el.getAttribute('data-ok') === '1') return;
+      el.style.display = 'flex';
+      var t = document.getElementById('loading-text');
+      if (t) t.textContent = msg || 'Error al cargar. Recarga la página.';
+      if (!document.getElementById('loading-retry')) {
+        var b = document.createElement('button');
+        b.id = 'loading-retry';
+        b.type = 'button';
+        b.textContent = 'Reintentar';
+        b.style.cssText = 'margin-top:8px;padding:8px 14px;cursor:pointer';
+        b.addEventListener('click', clearCachesAndReload);
+        el.appendChild(b);
+      }
+    };
+    setTimeout(function () {
+      var el = document.getElementById('loading');
+      if (!el || el.getAttribute('data-ok') === '1') return;
+      if (getComputedStyle(el).display === 'none') return;
+      if (document.getElementById('loading-retry')) return;
+      window.__svmapShowLoadError('Tardando demasiado. Comprueba la conexión o reintenta.');
+    }, 15000);
+  })();
+  </script>
+
+</body>
+</html>

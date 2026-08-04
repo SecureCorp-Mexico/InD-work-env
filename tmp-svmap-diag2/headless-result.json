@@ -1,0 +1,28 @@
+{
+  "diag": {
+    "href": "https://172.20.0.9/login.html",
+    "body": {
+      "w": 756,
+      "h": 469,
+      "top": 0,
+      "left": 0
+    },
+    "topbar": null,
+    "mapWrap": null,
+    "map": null,
+    "canvasExists": false,
+    "pixels": null,
+    "loadingDisplay": null,
+    "scripts": [
+      "login-CCGxLnwY.js"
+    ],
+    "mapLibreCtrl": false,
+    "mapLibreCanvas": false
+  },
+  "layers": {
+    "no": true
+  },
+  "consoleMsgs": [],
+  "failed": [],
+  "tileReqs": []
+}
