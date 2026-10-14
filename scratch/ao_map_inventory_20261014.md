@@ -25,17 +25,21 @@ Cluster `Alvaro0bregon` quorate (2 nodes). `pvesh nextid` = **107**. Templates: 
 
 **Map presence:** NONE. No SecureVu-Map LXC, no `/opt/securevu-map*`, no AO map `.env` under `~/.config/securecorp/`.
 
-## SecureVu health (read-only)
+## SecureVu health
 
 | CT | IP | Image | Docker health | :8971 HTTPS | :8554 TCP | go2rtc streams | cameras.yaml | MQTT |
 |---|---|---|---|---|---|---:|---:|---|
-| 101 | 10.0.7.118 | stable-tensorrt `0.17.1-eb48504` | **healthy** (restarted ~14:00 CDMX) | 200 (UI); API basic auth not site-pw | OPEN | **446** all producer_ok | **223** | **disabled** |
-| 104 | 10.0.7.59 | same | **unhealthy** since 2026-09-12 | UI 200; API **500** (auth :5001 refused) | OPEN | **290** all producer_ok | **227** | **disabled** |
+| 101 | 10.0.7.118 | stable-tensorrt **`0.18.0-6fac0cd`** | **healthy** RC=0 (post-upgrade) | **200**; auth :5001 alive | OPEN | **446** | **223** | **disabled** |
+| 104 | 10.0.7.59 | same digest `308a7ce…` | **healthy** RC=0 (was unhealthy weeks) | **200**; auth :5001 **alive** | OPEN | **290** | **226** | **disabled** |
+
+**Upgrade 2026-10-14 (Cursor, before map):** `0.17.1-eb48504` → `0.18.0-6fac0cd`. CT101 mem 32→48G; CT104 16→32G. Watchdog AO patch bind-mount (dead detector no longer kills NVR). CT101 detect off + `onnx_cpu`; CT104 detect dims 1280×720 to skip startup probe. Soft Soft/MH/HQ/Artz/GDL untouched.
 
 Notes:
 - :1984 **not published** on host (only 8971/8554/8555). go2rtc listens inside container; MH map pattern proxies `/sv/<ip>/` → :1984 — AO will need **1984 published** (or equivalent proxy path) on both NVRs for stream discovery/MSE.
-- CT104 Frigate/auth process down → recording JWT / `/api/stats` broken; **live RTSP :8554 still OK**.
+- CT104 auth was refused for weeks; **fixed after 0.18.0 + detect-dims** (uvicorn now up). Some CT104 edge cams still `no route to host`.
+- `/securevu` recordings disk **~97%** both CTs — retention/cleanup separate.
 - Plantilla local: `~/.cursor/Alcaldia AO/plantilla_camaras_AAO_filled.csv` (223 + header; `servidor=10.0.7.118`).
+- **Ready-for-map: YES** pending map CT + AO `.env` + optional :1984/MQTT.
 
 ## Adjacent services
 
@@ -62,7 +66,7 @@ Notes:
 | SV API credentials | in `.env` | unknown (site pw ≠ admin API) | User: `SV_API_USER`/`SV_API_PASS` |
 | DNS / public name | mh.map.secure.vu | none | Optional FQDN |
 | deploy.sh targets | MH defaults | need AO `PVE_HOST`/`PVE_CTID` | Wrapper or env override |
-| CT104 API health | — | unhealthy auth | Fix before recording features; live map may still work via :8554/:1984 |
+| CT104 API health | — | **fixed** (auth :5001 alive on 0.18.0) | Still publish :1984; some edge cams unreachable |
 
 ## Need from user before creating map CT
 
@@ -73,4 +77,4 @@ Notes:
 5. Whether **MQTT/events** and **SSO** are in scope for v1 or cameras-only first.
 6. OK to **publish :1984** on CT101/104 (compose change; no recording wipe) for map proxy.
 
-**Not done this pass:** no CT created, no NVR config writes, CT103 left stopped, HQ CT107 untouched.
+**NVR bump done this pass:** CT101+CT104 → `0.18.0-6fac0cd`; Soft Soft/MH/HQ/Artz/GDL untouched. **Still not done:** map CT / AO `.env` / :1984 publish / MQTT. CT103 left stopped; HQ CT107 untouched.
