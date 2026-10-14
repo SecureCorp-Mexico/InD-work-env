@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a0f1e" />
+  <title>Detecciones · SecureVu Map</title>
+  <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+</head>
+<body class="detections-page">
+  <div id="det-drawer">
+    <div id="det-head">
+      <span>Detecciones SecureVu <span id="det-page-badge" class="hidden"></span></span>
+      <div>
+        <select id="det-filter-pri" title="Prioridad">
+          <option value="all">Todas</option>
+          <option value="high">Alta</option>
+          <option value="medium">Media</option>
+          <option value="low">Baja</option>
+          <option value="lpr">Placas</option>
+        </select>
+        <select id="det-filter-label" title="Etiqueta">
+          <option value="">Cualquier etiqueta</option>
+          <option value="person">Persona</option>
+          <option value="car">Auto</option>
+          <option value="truck">Camión</option>
+          <option value="bus">Autobús</option>
+          <option value="motorcycle">Moto</option>
+          <option value="bicycle">Bicicleta</option>
+          <option value="license_plate">Placa</option>
+        </select>
+      </div>
+    </div>
+    <div id="det-search-wrap">
+      <input type="search" id="det-search" placeholder="Buscar por PMI, cámara, tipo, placa…" autocomplete="off" spellcheck="false" enterkeyhint="search" aria-label="Buscar detecciones" />
+      <button type="button" id="det-search-clear" class="hidden" title="Limpiar" aria-label="Limpiar búsqueda">×</button>
+    </div>
+    <div id="det-list"></div>
+  </div>
+  <script type="module" src="/src/detections-page.js"></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a0f1e" />
+  <title>Alarmas · SecureVu Map</title>
+  <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+</head>
+<body class="notifications-page">
+  <div id="alarm-drawer">
+    <div id="alarm-head">
+      <span>🚨 Alarmas SecureTrax <span id="notif-badge" class="hidden"></span></span>
+      <div>
+        <select id="alarm-filter">
+          <option value="open">Abiertas</option>
+          <option value="active">Activas</option>
+          <option value="ack">Reconocidas</option>
+          <option value="resolved">Resueltas</option>
+          <option value="all">Todas</option>
+        </select>
+        <button type="button" id="alarm-sound-toggle" title="Sonido de alarma: activo (clic para silenciar)" aria-pressed="false" aria-label="Silenciar sonido de alarma"><svg class="alarm-sound-ico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round" stroke-linecap="round" d="M5 9.25h2.9L12 5.2v13.6l-4.1-4.05H5z"/><path fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" d="M15.1 9.1a3.1 3.1 0 0 1 0 5.8"/><path fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" d="M17.55 6.7a6.1 6.1 0 0 1 0 10.6"/></svg></button>
+      </div>
+    </div>
+    <div id="alarm-search-wrap">
+      <input type="search" id="alarm-search" placeholder="Buscar por PMI, tipo, ticket…" autocomplete="off" spellcheck="false" enterkeyhint="search" aria-label="Buscar alarmas" />
+      <button type="button" id="alarm-search-clear" class="hidden" title="Limpiar" aria-label="Limpiar búsqueda">×</button>
+    </div>
+    <div id="alarm-list"></div>
+  </div>
+  <script type="module" src="/src/notifications.js"></script>
+</body>
+</html>

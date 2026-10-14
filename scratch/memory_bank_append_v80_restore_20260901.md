@@ -1,0 +1,1 @@
+**v80 regression restore 2026-09-01 (Cursor):** v78 deploy overwrote CT103 web with stale ~/camera-map-mh tree. Restored from scratch/svmap-v77-det-search + kept main.js positron/VoIP. Build v80-merge-preV78-plus-carto-20260901. Web-only deploy; snapshot preV80Restore20260901. PMO 2858 @97%.

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a0f1e" />
+  <title>Grabación de la detección · SecureVu Map</title>
+  <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+</head>
+<body class="alarm-video-page">
+  <header id="av-top">
+    <div id="av-brand">
+      <img src="/logo.svg" alt="" width="22" height="22" />
+      <strong id="av-title">Grabación del momento</strong>
+      <span id="av-meta" class="muted"></span>
+    </div>
+    <div id="av-actions">
+      <label class="av-opt"><input type="checkbox" id="av-mute" checked /> Silencio</label>
+      <button type="button" id="av-reload" title="Volver a cargar el clip">⟲</button>
+      <a id="av-map" href="/">← Mapa</a>
+    </div>
+  </header>
+
+  <main id="dv-stage">
+    <video id="dv-video" class="hidden" controls playsinline preload="auto"></video>
+    <p id="dv-status">Cargando la grabación del momento…</p>
+  </main>
+
+  <footer id="dv-bar">
+    <span id="dv-when" class="muted"></span>
+    <div id="dv-transport">
+      <button type="button" id="dv-back" title="Mover el clip 10 s antes">−10 s</button>
+      <button type="button" id="dv-moment" title="Ir al instante de la captura">Momento de la captura</button>
+      <button type="button" id="dv-fwd" title="Mover el clip 10 s después">+10 s</button>
+    </div>
+  </footer>
+
+  <script type="module" src="/src/detection-video.js"></script>
+</body>
+</html>

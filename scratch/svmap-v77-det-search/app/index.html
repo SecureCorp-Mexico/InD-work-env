@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a0f1e" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="SecureVu Map" />
+  <!-- v41: tour explains PTZ without arming (no keyboard move) -->
+  <meta name="svmap-build" content="v77-detecciones-search-20260815" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="/icon-192.png" />
+  <title>SecureVu Map</title>
+  <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+</head>
+<body>
+
+  <div id="topbar">
+    <div id="logo">
+      <img src="/logo.svg" alt="SecureVu logo" id="logo-img" />
+      <span id="logo-title-wrap">
+        <span id="logo-brand">SecureVu Map</span>
+        <button type="button" id="basemap-3d" class="basemap-3d-btn" data-tour="basemap-3d" aria-pressed="false" title="Activar 3D: edificios sobre el mapa (inclina con brújula)">3D</button>
+        <span id="logo-suffix"></span>
+      </span>
+      <!-- kept for admin.html / legacy selectors; mirror of brand+suffix -->
+      <span id="logo-text" class="visually-hidden">SecureVu Map</span>
+    </div>
+    <button id="stats" data-tour="stats" title="Ver estadísticas de disponibilidad">
+      <span id="stat-total"></span>
+      <span id="stat-online" class="pill green"></span>
+      <span id="stat-standby" class="pill amber"></span>
+      <span id="stat-offline" class="pill red"></span>
+      <span id="stat-traccar" class="pill hidden" title="Dispositivos SecureTrax" style="background:#dbeafe;color:#1e40af"></span>
+      <span id="stat-howen" class="pill" title="Pares Howen VSS + SecureTrax" style="background:#ede9fe;color:#5b21b6"></span>
+    </button>
+    <div id="filters">
+      <select id="filter-servidor"><option value="">Todos los servidores</option></select>
+      <select id="filter-tipo"><option value="">Todos los tipos</option></select>
+      <div id="search-wrap">
+        <button type="button" id="search-btn" data-tour="search" aria-expanded="false" aria-controls="search-panel" title="Buscar cámaras">Buscar</button>
+        <div id="search-panel" class="hidden" role="dialog" aria-label="Buscar cámaras">
+          <div class="search-panel-head">
+            <input id="search" type="search" placeholder="Nombre de cámara…" autocomplete="off" />
+            <button type="button" id="search-clear" class="hidden" title="Limpiar">&#x2715;</button>
+          </div>
+          <ul id="search-list" class="hidden"></ul>
+        </div>
+      </div>
+    </div>
+    <div id="userbar">
+      <div id="sel-bar" class="hidden">
+        <span id="sel-count" title="Cámaras seleccionadas">0</span>
+        <button type="button" id="sel-videowall" data-tour="videowall" title="Abrir Videowall">VW</button>
+        <button type="button" id="sel-clear" title="Limpiar selección">✕</button>
+      </div>
+      <button type="button" id="panels-clear" class="hidden" title="Cerrar todos los popups">Popups ✕</button>
+      <span id="intercom-pill" class="pill muted hidden" title="Estado del intercom">VoIP</span>
+      <button id="alarm-bell" data-tour="alarms" title="Alarmas SOS / Tamper" aria-label="Alarmas">
+        <svg class="tb-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 22a2.5 2.5 0 0 0 2.45-2h-4.9A2.5 2.5 0 0 0 12 22zm7-6V11a7 7 0 1 0-14 0v5l-1.7 1.7A1 1 0 0 0 4 20h16a1 1 0 0 0 .7-1.7L19 16z"/></svg>
+        <span id="alarm-badge" class="hidden">0</span>
+      </button>
+      <button id="det-bell" data-tour="detections" title="Detecciones SecureVu (analíticos)" aria-label="Detecciones">
+        <svg class="tb-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 4.5C7 4.5 2.7 7.6 1 12c1.7 4.4 6 7.5 11 7.5s9.3-3.1 11-7.5C21.3 7.6 17 4.5 12 4.5zm0 12.5a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-8a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg>
+        <span id="det-badge" class="hidden">0</span>
+      </button>
+      <a id="help-link" data-tour="help" href="/guia.html" target="_blank" rel="noopener" title="Ayuda / Guía de uso" aria-label="Ayuda">
+        <svg class="tb-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 15a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5zm1.4-4.55-.2.15a1 1 0 0 1-1.4-1.4l.35-.25c.7-.5 1.15-.9 1.15-1.7a1.3 1.3 0 0 0-2.6 0 1 1 0 1 1-2 0 3.3 3.3 0 0 1 6.6 0c0 1.55-.9 2.45-1.9 3.2z"/></svg>
+      </a>
+      <a id="admin-link" class="hidden" data-tour="admin" href="/admin.html" title="Administración" aria-label="Administración">
+        <svg class="tb-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M19.14 12.94c.04-.31.06-.63.06-.94s-.02-.63-.06-.94l2.03-1.58a.5.5 0 0 0 .12-.64l-1.92-3.32a.5.5 0 0 0-.6-.22l-2.39.96a7.07 7.07 0 0 0-1.63-.94l-.36-2.54a.5.5 0 0 0-.5-.42h-3.84a.5.5 0 0 0-.5.42l-.36 2.54c-.58.23-1.12.54-1.63.94l-2.39-.96a.5.5 0 0 0-.6.22L2.71 8.84a.5.5 0 0 0 .12.64l2.03 1.58c-.04.31-.06.63-.06.94s.02.63.06.94L2.83 14.5a.5.5 0 0 0-.12.64l1.92 3.32c.14.24.43.34.68.22l2.39-.96c.5.4 1.05.71 1.63.94l.36 2.54c.05.24.26.42.5.42h3.84c.24 0 .45-.18.5-.42l.36-2.54c.58-.23 1.12-.54 1.63-.94l2.39.96c.25.12.54.02.68-.22l1.92-3.32a.5.5 0 0 0-.12-.64l-2.03-1.58zM12 15.5A3.5 3.5 0 1 1 12 8.5a3.5 3.5 0 0 1 0 7z"/></svg>
+      </a>
+      <div id="user-menu" class="user-menu"></div>
+    </div>
+  </div>
+
+  <div id="map-wrap">
+    <div id="map" data-tour="map"></div>
+    <div id="panels-layer"></div>
+  </div>
+
+
+  <!-- Llamada entrante Fanvil SOS (ring group → ext operador) -->
+  <div id="intercom-incoming" class="hidden" role="alertdialog" aria-live="assertive" aria-label="Llamada entrante intercom">
+    <div class="ici-body">
+      <span class="ici-label">Intercom entrante</span>
+      <strong id="ici-from">—</strong>
+      <div class="ici-actions">
+        <button type="button" id="ici-answer" class="ici-answer">Contestar</button>
+        <button type="button" id="ici-reject" class="ici-reject">Rechazar</button>
+      </div>
+    </div>
+  </div>
+  <!-- Stub for global intercom pill state (feature often off); panels have own controls -->
+  <div id="intercom-box" class="hidden" aria-hidden="true">
+    <button id="btn-intercom" class="primary" type="button">Hablar con PMI</button>
+    <button id="btn-intercom-hangup" class="hidden" type="button">Colgar</button>
+    <span id="intercom-msg" class="muted"></span>
+  </div>
+
+  <template id="float-panel-tpl">
+    <div class="float-panel">
+      <div class="fp-header">
+        <div class="fp-title-wrap">
+          <span class="fp-status-dot dot"></span>
+          <a class="fp-title" href="#" target="_blank" rel="noopener"></a>
+        </div>
+        <button type="button" class="fp-close" title="Cerrar">&#x2715;</button>
+      </div>
+
+      <div class="fp-body">
+        <div class="fp-video">
+          <video class="fp-video-el" autoplay muted playsinline></video>
+          <img class="fp-mjpeg hidden" alt="" />
+          <iframe class="fp-howen hidden" title="Howen VSS" allow="autoplay; fullscreen" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <div class="fp-video-msg hidden"></div>
+          <div class="fp-controls">
+            <button type="button" class="fp-quality" title="Calidad HD / SD" aria-label="Calidad HD / SD" data-quality="sd">
+              <span class="q-opt" data-q="hd">HD</span>
+              <span class="q-opt" data-q="sd">SD</span>
+            </button>
+            <button type="button" class="fp-fullscreen" title="Pantalla completa">&#x26F6;</button>
+            <button type="button" class="fp-retry" title="Reconectar">&#x21BA;</button>
+            <a class="fp-howen-open hidden" href="#" target="_blank" rel="noopener" title="Abrir Howen">↗</a>
+          </div>
+        </div>
+        <div class="fp-cameras fp-cams-collapsed hidden" title="Cámaras del PMI">
+          <div class="fp-cams-head">
+            <span class="fp-cams-chevron" role="button" tabindex="0" aria-expanded="false" aria-label="Expandir u ocultar nombres de cámaras" title="Expandir / ocultar nombres"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true" focusable="false"><path d="M2.5 4.25 L6 7.75 L9.5 4.25" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </div>
+          <div class="fp-cams-list"></div>
+        </div>
+      </div>
+
+      <div class="fp-playback-controls hidden" aria-label="Controles de grabación">
+        <div class="fp-pb-head">
+          <span class="fp-playback-mode">Grabación</span>
+          <span class="fp-playback-time"></span>
+        </div>
+        <div class="fp-pb-actions">
+          <div class="fp-pb-transport" role="group" aria-label="Reproducción">
+            <button type="button" class="fp-playback-back" title="Retroceder 30 segundos" aria-label="Retroceder 30 segundos">−30 s</button>
+            <button type="button" class="fp-playback-toggle" title="Pausar o reproducir">Pausa</button>
+            <button type="button" class="fp-playback-forward" title="Avanzar 30 segundos" aria-label="Avanzar 30 segundos">+30 s</button>
+          </div>
+          <button type="button" class="fp-playback-speed" title="Velocidad de reproducción" aria-label="Velocidad de reproducción">1×</button>
+          <button type="button" class="fp-live" title="Volver a video en vivo">Volver en vivo</button>
+        </div>
+      </div>
+
+      <div class="fp-recording fp-rec-collapsed hidden" title="Selecciona una hora verde o ámbar para ver la grabación">
+        <div class="fp-rec-head">
+          <span class="meta-key">Grabación<span class="fp-rec-title-extra"> servidor</span><span class="fp-rec-desde"></span></span>
+          <span class="fp-rec-head-right">
+            <span class="fp-rec-pct" hidden aria-hidden="true"></span>
+            <span class="fp-rec-chevron" role="button" tabindex="0" aria-expanded="false" aria-label="Expandir u ocultar grabación" title="Expandir / ocultar Grabación (+ microSD)"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true" focusable="false"><path d="M2.5 4.25 L6 7.75 L9.5 4.25" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </span>
+        </div>
+        <div class="fp-rec-body">
+          <div class="fp-rec-bar" title="Cada segmento = 1 hora · selecciona verde o ámbar para ver la grabación"></div>
+          <div class="fp-rec-sub"></div>
+        </div>
+      </div>
+
+      <a class="fp-recording fp-recording-edge fp-rec-collapsed hidden" href="#" target="_blank" rel="noopener" title="Abre la interfaz de la cámara (almacenamiento local)">
+        <div class="fp-rec-head">
+          <span class="meta-key">Grabación<span class="fp-rec-title-extra"> PMI</span><span class="fp-rec-desde"></span></span>
+          <span class="fp-rec-head-right">
+            <span class="fp-rec-pct fp-edge-pct" hidden aria-hidden="true"></span>
+          </span>
+        </div>
+        <div class="fp-rec-body">
+          <div class="fp-rec-bar fp-edge-bar" title="Grabación en la microSD de la cámara · cada segmento = 1 hora"></div>
+          <div class="fp-rec-sub fp-edge-sub"></div>
+        </div>
+      </a>
+
+      <div class="fp-footer">
+        <button type="button" class="fp-mute" title="Activar audio" aria-label="Activar audio"><svg class="fp-mute-ico" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round" stroke-linecap="round" d="M5 9.25h2.9L12 5.2v13.6l-4.1-4.05H5z"/><path fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" d="M14.8 8.4l6.4 6.4M21.2 8.4l-6.4 6.4"/></svg></button>
+        <span class="fp-footer-spacer" aria-hidden="true"></span>
+        <!-- PTZ pill injects here (before intercom). Order: mute · Control… · Hablar · Videowall -->
+        <button type="button" class="fp-intercom-pill ptz-pill hidden" aria-label="Hablar" title="Intercom">Hablar</button>
+        <label class="fp-select" title="Añadir todas las cámaras del PMI al Videowall">
+          <input type="checkbox" class="fp-select-cb" aria-label="Videowall" />
+          <span>Videowall</span>
+        </label>
+      </div>
+    </div>
+  </template>
+
+  <!-- Carril derecho EXCLUSIVO: #alarm-drawer y #det-drawer comparten el mismo
+       hueco (fixed, right:0, 400px). Ábrelos SIEMPRE con showRightDrawer() de
+       src/panels.js — nunca con classList.remove('hidden') directo. panels.js
+       lo impone en runtime, pero no te apoyes en eso. No reordenes estos dos
+       bloques sin leer la salvaguarda CSS de style.css. -->
+  <!-- Panel de alarmas SOS / Tamper (botón 🔔) -->
+  <div id="alarm-drawer" class="hidden">
+    <div id="alarm-head">
+      <span>🚨 Alarmas SecureTrax</span>
+      <div>
+        <select id="alarm-filter">
+          <option value="open">Abiertas</option>
+          <option value="active">Activas</option>
+          <option value="ack">Reconocidas</option>
+          <option value="resolved">Resueltas</option>
+          <option value="all">Todas</option>
+        </select>
+        <button type="button" id="alarm-sound-toggle" title="Sonido de alarma: activo (clic para silenciar)" aria-pressed="false" aria-label="Silenciar sonido de alarma"><svg class="alarm-sound-ico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round" stroke-linecap="round" d="M5 9.25h2.9L12 5.2v13.6l-4.1-4.05H5z"/><path fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" d="M15.1 9.1a3.1 3.1 0 0 1 0 5.8"/><path fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" d="M17.55 6.7a6.1 6.1 0 0 1 0 10.6"/></svg></button>
+        <button id="alarm-popout" title="Abrir en ventana aparte">↗</button>
+        <button id="alarm-close" title="Cerrar">&#x2715;</button>
+      </div>
+    </div>
+    <p id="alarm-popped-hint" class="hidden">Abierto en otra ventana · <button type="button" id="alarm-popout-reopen" class="linkish">Reabrir</button></p>
+    <div id="alarm-search-wrap">
+      <input type="search" id="alarm-search" placeholder="Buscar por PMI, tipo, ticket…" autocomplete="off" spellcheck="false" enterkeyhint="search" aria-label="Buscar alarmas" />
+      <button type="button" id="alarm-search-clear" class="hidden" title="Limpiar" aria-label="Limpiar búsqueda">×</button>
+    </div>
+    <div id="alarm-list"></div>
+  </div>
+
+  <!-- Panel de detecciones SecureVu (analíticos) -->
+  <div id="det-drawer" class="hidden">
+    <div id="det-head">
+      <span>Detecciones SecureVu</span>
+      <div>
+        <select id="det-filter-pri" title="Prioridad">
+          <option value="all">Todas</option>
+          <option value="high">Alta</option>
+          <option value="medium">Media</option>
+          <option value="low">Baja</option>
+          <option value="lpr">Placas</option>
+        </select>
+        <select id="det-filter-label" title="Etiqueta">
+          <option value="">Cualquier etiqueta</option>
+          <option value="person">Persona</option>
+          <option value="car">Auto</option>
+          <option value="truck">Camión</option>
+          <option value="bus">Autobús</option>
+          <option value="motorcycle">Moto</option>
+          <option value="bicycle">Bicicleta</option>
+          <option value="license_plate">Placa</option>
+        </select>
+        <button id="det-popout" title="Abrir en ventana aparte">↗</button>
+        <button id="det-close" title="Cerrar">&#x2715;</button>
+      </div>
+    </div>
+    <p id="det-popped-hint" class="hidden">Abierto en otra ventana · <button type="button" id="det-popout-reopen" class="linkish">Reabrir</button></p>
+    <div id="det-search-wrap">
+      <input type="search" id="det-search" placeholder="Buscar por PMI, cámara, tipo, placa…" autocomplete="off" spellcheck="false" enterkeyhint="search" aria-label="Buscar detecciones" />
+      <button type="button" id="det-search-clear" class="hidden" title="Limpiar" aria-label="Limpiar búsqueda">×</button>
+    </div>
+    <div id="det-list"></div>
+  </div>
+
+  <!-- Overview de disponibilidad (clic en los contadores de arriba) -->
+  <div id="stats-modal" class="hidden">
+    <div id="stats-card">
+      <div id="stats-modal-head">
+        <span>Disponibilidad de cámaras</span>
+        <button id="stats-close" title="Cerrar">&#x2715;</button>
+      </div>
+      <div id="stats-body"></div>
+    </div>
+  </div>
+
+  <button id="chat-fab" data-tour="chat" title="Asistente operativo" aria-label="Abrir asistente">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v7A2.5 2.5 0 0 1 17.5 16H13l-3.2 3.2c-.5.5-1.3.1-1.3-.6V16H6.5A2.5 2.5 0 0 1 4 13.5v-7Z" stroke="currentColor" stroke-width="1.6"/>
+      <circle cx="9" cy="10" r="1" fill="currentColor"/>
+      <circle cx="12" cy="10" r="1" fill="currentColor"/>
+      <circle cx="15" cy="10" r="1" fill="currentColor"/>
+    </svg>
+  </button>
+  <div id="chat-drawer" class="hidden">
+    <div id="chat-header">
+      <div class="chat-header-meta">
+        <span class="chat-header-title">Asistente operativo</span>
+        <span class="chat-header-sub">Estado · alarmas · reportes</span>
+      </div>
+      <div class="chat-header-actions">
+        <button id="chat-clear" title="Nueva conversación" type="button">⟲</button>
+        <button id="chat-close" title="Cerrar" type="button">&#x2715;</button>
+      </div>
+    </div>
+    <div id="chat-messages">
+      <div class="chat-msg bot chat-welcome">Consulto el estado de la flota, alarmas SOS/Tamper y detecciones.
+Prueba: «estado de la flota», «alarmas de hoy» o «cámaras por tipo».</div>
+    </div>
+    <div id="chat-chips" aria-label="Sugerencias"></div>
+    <form id="chat-form">
+      <textarea id="chat-input" rows="1" placeholder="Pregunta o pide un reporte…" autocomplete="off"></textarea>
+      <button type="submit" id="chat-send" title="Enviar">➤</button>
+    </form>
+  </div>
+
+  <div id="loading">
+    <div id="loading-spinner"></div>
+    <div id="loading-text">Cargando dispositivos…</div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

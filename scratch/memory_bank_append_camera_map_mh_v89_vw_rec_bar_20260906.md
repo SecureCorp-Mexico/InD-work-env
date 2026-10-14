@@ -1,0 +1,1 @@
+**v89 Videowall Grabación 3 h 2026-09-06 (Cursor):** Per-tile recording bar (last **3** hours) under video — same green/grey + clickable as float (`loadRecordingHourBar` in `stats.js`). Click → in-tile `/api/recording/clip`; **En vivo** returns live. Stamp `v89-vw-rec-bar-3h-20260906` web-only CT103. PMO **2858**.
