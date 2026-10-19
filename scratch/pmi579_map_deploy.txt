@@ -1,0 +1,76 @@
+Image=ghcr.io/securecorp-mexico/securevu-map-api:latest Created=2026-10-19T22:50:12.043695275Z Id=sha256:aad018faeec3f61a3f716e74467e225a7c6f206d992abfc39a2a59bec44902aa
+bin
+boot
+data
+dev
+etc
+home
+lib
+lib64
+media
+mnt
+opt
+proc
+root
+run
+sbin
+srv
+sys
+tmp
+usr
+var
+/opt/securevu-map/recordings.mjs
+0, sum(1 for c in cams.values() if (c or {}).get(camera_fps,0)>0))
+det=d.get(detectors) or {}
+for k,v in det.items():
+  print(det, k, inf_ms, (v or {}).get(inference_speed))
+
+Dockerfile
+app
+compose.yaml
+deploy
+mh-sos-probe.mjs
+mh-ucm-rg.mjs
+mosquitto.passwd
+server
+shared
+/**
+ * Disponibilidad de GRABACIÓN (Frigate/SecureVu recordings API).
+ *
+ * Distinto del uptime de stream (go2rtc): aquí se consulta
+ * GET /api/{camera}/recordings/summary en cada NVR (:8971, JWT).
+ *
+ * Credenciales: SV_API_USER / SV_API_PASS (mismo admin de la flota).
+ * TLS autofirmado: SV_TLS_INSECURE=true (default) → no verificar cert.
+ */
+import fs from 'node:fs';
+import path from 'node:path';
+
+const TZ = 'America/Mexico_City';
+const HOUR = 3600;
+const WINDOW_H = 24; // últimas 24 h (1 segmento / hora)
+const TOKEN_TTL_MS = 50 * 60_000;
+/** Soft Soft .146 under load often needs >60s; cache longer so the bar stays painted. */
+const SUMMARY_CACHE_MS = Math.max(
+  60_000,
+  Number(process.env.RECORDING_SUMMARY_CACHE_MS) || 300_000,
+);
+const LOGIN_TIMEOUT_MS = Math.max(
+  30_000,
+  Number(process.env.RECORDING_LOGIN_TIMEOUT_MS) || 60_000,
+);
+const SUMMARY_TIMEOUT_MS = Math.max(
+  60_000,
+  Number(process.env.RECORDING_SUMMARY_TIMEOUT_MS) || 120_000,
+);
+const SUMMARY_RETRIES = Math.max(1, Number(process.env.RECORDING_SUMMARY_RETRIES) || 3);
+
+function sleep(ms) {
+  return new Promise((r) => setTimeout(r, ms));
+}
+
+function isRetryableSvError(err) {
+  const msg = String(err?.message || err || '').toLowerCase();
+  return (
+    msg.includes('timeout')
+    || msg.includes('aborted')

@@ -1,0 +1,27 @@
+{
+  "server": "172.20.0.146",
+  "user": "admin",
+  "passLen": 13,
+  "cams": [
+    "i150200700_579_2_24_bullet",
+    "i150200700_579_2_25_bullet",
+    "i150200700_579_2_26_bullet",
+    "i150200700_579_2_27_bullet",
+    "i150200700_578_2_10_bullet"
+  ]
+}
+file:///tmp/pmi579_probe_summary.mjs:47
+      reject(new Error(`timeout after ${timeoutMs}ms`));
+             ^
+
+Error: timeout after 90000ms
+    at ClientRequest.<anonymous> (file:///tmp/pmi579_probe_summary.mjs:47:14)
+    at ClientRequest.emit (node:events:519:28)
+    at TLSSocket.emitRequestTimeout (node:_http_client:931:9)
+    at Object.onceWrapper (node:events:633:28)
+    at TLSSocket.emit (node:events:531:35)
+    at Socket._onTimeout (node:net:605:8)
+    at listOnTimeout (node:internal/timers:585:17)
+    at process.processTimers (node:internal/timers:521:7)
+
+Node.js v22.23.3

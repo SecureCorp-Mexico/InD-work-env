@@ -1,0 +1,32 @@
+
+[1mDockge LXC Container[m
+    🌐  [m[33m Provided by: [1;92mcommunity-scripts ORG [33m| GitHub: [1;92mhttps://github.com/community-scripts/ProxmoxVE[m
+
+    🖥️  [m[33m OS: [1;92mDebian GNU/Linux - Version: 13[m
+    🏠  [m[33m Hostname: [1;92mmxmhvmsl00003[m
+    💡  [m[33m IP Address: [1;92m172.20.0.146[m
+ 17:20:57 up 41 days,  2:29,  2 users,  load average: 139.98, 145.62, 172.40
+Health=unhealthy Started=2026-10-19T18:11:57.445916518Z
+981
+curl: (28) Operation timed out after 15002 milliseconds with 0 bytes received
+
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import sys,json; d=json.load(sys.stdin); cs=d.get("cameras") or {}; print("cams",len(cs));
+                       ~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib/python3.13/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+        cls=cls, object_hook=object_hook,
+        parse_float=parse_float, parse_int=parse_int,
+        parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)
+  File "/usr/lib/python3.13/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/usr/lib/python3.13/json/decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/json/decoder.py", line 363, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+8971_local=200 t=0.025930
+8971_ext=200 t=0.008930

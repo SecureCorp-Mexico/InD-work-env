@@ -1,0 +1,112 @@
+/opt/securevu-map/recordings.mjs
+{
+  "stream": "i150200700_579_2_24_bullet",
+  "ms": 916,
+  "camera": "i150200700_579_2_24_bullet",
+  "coverage": 0.248,
+  "source": "disk",
+  "stale": false,
+  "buckets": 24,
+  "withFootage": 8,
+  "error": null,
+  "last6": [
+    {
+      "ratio": 0.67,
+      "dur": 2410
+    },
+    {
+      "ratio": 0.88,
+      "dur": 3170
+    },
+    {
+      "ratio": 0.97,
+      "dur": 3500
+    },
+    {
+      "ratio": 0.97,
+      "dur": 3500
+    },
+    {
+      "ratio": 0.91,
+      "dur": 3280
+    },
+    {
+      "ratio": 0.96,
+      "dur": 1750
+    }
+  ]
+}
+{
+  "stream": "i150200700_579_2_25_bullet",
+  "ms": 747,
+  "camera": "i150200700_579_2_25_bullet",
+  "coverage": 0.246,
+  "source": "disk",
+  "stale": false,
+  "buckets": 24,
+  "withFootage": 8,
+  "error": null,
+  "last6": [
+    {
+      "ratio": 0.65,
+      "dur": 2330
+    },
+    {
+      "ratio": 0.86,
+      "dur": 3110
+    },
+    {
+      "ratio": 0.97,
+      "dur": 3480
+    },
+    {
+      "ratio": 0.96,
+      "dur": 3470
+    },
+    {
+      "ratio": 0.92,
+      "dur": 3300
+    },
+    {
+      "ratio": 0.96,
+      "dur": 1740
+    }
+  ]
+}
+{
+  "stream": "i150200700_578_2_10_bullet",
+  "ms": 359,
+  "camera": "i150200700_578_2_10_bullet",
+  "coverage": 0.304,
+  "source": "disk",
+  "stale": false,
+  "buckets": 24,
+  "withFootage": 8,
+  "error": null,
+  "last6": [
+    {
+      "ratio": 0.94,
+      "dur": 3370
+    },
+    {
+      "ratio": 0.94,
+      "dur": 3380
+    },
+    {
+      "ratio": 0.97,
+      "dur": 3490
+    },
+    {
+      "ratio": 0.97,
+      "dur": 3510
+    },
+    {
+      "ratio": 0.91,
+      "dur": 3290
+    },
+    {
+      "ratio": 0.96,
+      "dur": 1740
+    }
+  ]
+}

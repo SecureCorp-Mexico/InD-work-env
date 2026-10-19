@@ -1,0 +1,6 @@
+[ptz] route securevu 172.20.0.146/i150200700_592_2_230_ptz fallback_ws 6274ms (sv=3159ms probe=3115ms)
+[ptz] route securevu 172.20.0.146/i150200700_581_2_54_ptz fallback_ws 12036ms (sv=12001ms probe=34ms)
+[ptz] route securevu 172.20.0.146/i150200700_592_2_230_ptz fallback_ws 15101ms (sv=12000ms probe=3101ms)
+[ptz] route securevu 172.20.0.146/i150200700_610_4_6_ptz fallback_ws 12020ms (sv=12002ms probe=18ms)
+==== geo 578/579/580 ====
+OCI runtime exec failed: exec failed: unable to start container process: exec: "python3": executable file not found in $PATH

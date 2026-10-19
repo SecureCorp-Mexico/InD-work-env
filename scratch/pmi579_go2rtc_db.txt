@@ -1,0 +1,60 @@
+
+[1mDockge LXC Container[m
+    🌐  [m[33m Provided by: [1;92mcommunity-scripts ORG [33m| GitHub: [1;92mhttps://github.com/community-scripts/ProxmoxVE[m
+
+    🖥️  [m[33m OS: [1;92mDebian GNU/Linux - Version: 13[m
+    🏠  [m[33m Hostname: [1;92mmxmhvmsl00003[m
+    💡  [m[33m IP Address: [1;92m172.20.0.146[m
+=== go2rtc ===
+i150200700_578_2_10_bullet_1 consumers 1 producers 1
+i150200700_578_2_10_bullet_2 consumers 0 producers 1
+i150200700_579_2_24_bullet_1 consumers 1 producers 1
+i150200700_579_2_24_bullet_2 consumers 0 producers 1
+bytes 536739
+i150200700_578_2_10_bullet_1 cons 1 prod 1
+i150200700_579_2_22_ptz_1 cons 1 prod 1
+i150200700_579_2_22_ptz_2 cons 0 prod 1
+i150200700_579_2_23_lpr_1 cons 1 prod 1
+i150200700_579_2_23_lpr_2 cons 0 prod 1
+i150200700_579_2_24_bullet_1 cons 1 prod 1
+i150200700_579_2_24_bullet_2 cons 0 prod 1
+i150200700_579_2_25_bullet_1 cons 1 prod 1
+i150200700_579_2_25_bullet_2 cons 0 prod 1
+i150200700_579_2_26_bullet_1 cons 1 prod 1
+i150200700_579_2_26_bullet_2 cons 0 prod 1
+i150200700_579_2_27_bullet_1 cons 1 prod 1
+i150200700_579_2_27_bullet_2 cons 0 prod 1
+=== frigate db ===
+-rw-r--r-- 1 root root 5.1G Jun  1 11:29 /config/frigate.db
+=== top cpu in container ===
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root     3776143 1100  0.0   9696  4904 ?        R    17:24   0:00 ps aux --sort=-%cpu
+root         186  134  2.1 17932232 2878116 ?    Dsl  12:11 421:32 python3 -u -m securevu
+root       13859 89.9  0.7 35564464 979368 ?     SNl  12:12 281:08 securevu.output
+root         178 87.9  0.6 2111792 894548 ?      Rsl  12:11 274:46 /usr/local/go2rtc/bin/go2rtc -config=/config/go2rtc_homekit.yml -config=/dev/shm/go2rtc.yaml
+root         712 67.7  0.1 33335880 193636 ?     Sl   12:12 211:46 /usr/bin/python3 -Wignore:::numpy.core.getlimits -c from multiprocessing.forkserver import main; main(5, 7, ['sqlite3', 'numpy', 'cv2', 'peewee', 'zmq', 'ruamel.yaml', 'securevu.camera.maintainer'], **{'sys_path': ['/opt/securevu', '/usr/lib/python311.zip', '/usr/lib/python3.11', '/usr/lib/python3.11/lib-dynload', '/usr/local/lib/python3.11/dist-packages', '/usr/lib/python3/dist-packages']})
+root       13701 44.4  0.2 8536248 364976 ?      Sl   12:12 138:57 securevu.recording_manager
+root      655739 21.7  0.0 1004280 55920 ?       Ssl  16:02  17:49 /usr/lib/ffmpeg/8.0/bin/ffmpeg -hide_banner -loglevel warning -threads 2 -user_agent FFmpeg SecureVu/0.18.0-6fac0cd -rtsp_transport tcp -timeout 10000000 -i rtsp://127.0.0.1:8554/i150200700_587_2_151_lpr_1 -f segment -segment_time 10 -segment_format mp4 -reset_timestamps 1 -strftime 1 -c:v copy -c:a aac /tmp/cache/i150200700_587_2_151_lpr@%Y%m%d%H%M%S%z.mp4 -r 3 -vf fps=3,scale=640:360 -threads 2 -f rawvideo -pix_fmt yuv420p pipe:
+root       29756 19.9  0.0 987660 55688 ?        Ssl  12:12  62:17 /usr/lib/ffmpeg/8.0/bin/ffmpeg -hide_banner -loglevel warning -threads 2 -user_agent FFmpeg SecureVu/0.18.0-6fac0cd -rtsp_transport tcp -timeout 10000000 -i rtsp://127.0.0.1:8554/i150200700_595_3_23_lpr_1 -f segment -segment_time 10 -segment_format mp4 -reset_timestamps 1 -strftime 1 -c:v copy -c:a aac /tmp/cache/i150200700_595_3_23_lpr@%Y%m%d%H%M%S%z.mp4 -r 3 -vf fps=3,scale=640:360 -threads 2 -f rawvideo -pix_fmt yuv420p pipe:
+root     2310549 18.2  0.0 987592 54792 ?        Ssl  13:15  45:23 /usr/lib/ffmpeg/8.0/bin/ffmpeg -hide_banner -loglevel warning -threads 2 -user_agent FFmpeg SecureVu/0.18.0-6fac0cd -rtsp_transport tcp -timeout 10000000 -i rtsp://127.0.0.1:8554/i150200700_598_3_71_lpr_1 -f segment -segment_time 10 -segment_format mp4 -reset_timestamps 1 -strftime 1 -c:v copy -c:a aac /tmp/cache/i150200700_598_3_71_lpr@%Y%m%d%H%M%S%z.mp4 -r 3 -vf fps=3,scale=640:360 -threads 2 -f rawvideo -pix_fmt yuv420p pipe:
+root     2441838 16.3  0.0 987828 56620 ?        Ssl  13:18  40:17 /usr/lib/ffmpeg/8.0/bin/ffmpeg -hide_banner -loglevel warning -threads 2 -user_agent FFmpeg SecureVu/0.18.0-6fac0cd -rtsp_transport tcp -timeout 10000000 -i rtsp://127.0.0.1:8554/i150200700_579_2_23_lpr_1 -f segment -segment_time 10 -segment_format mp4 -reset_timestamps 1 -strftime 1 -c:v copy -c:a aac /tmp/cache/i150200700_579_2_23_lpr@%Y%m%d%H%M%S%z.mp4 -r 3 -vf fps=3,scale=640:360 -threads 2 -f rawvideo -pix_fmt yuv420p pipe:
+root       21025 16.0  0.0 987808 58072 ?        Ssl  12:12  49:58 /usr/lib/ffmpeg/8.0/bin/ffmpeg -hide_banner -loglevel warning -threads 2 -user_agent FFmpeg SecureVu/0.18.0-6fac0cd -rtsp_transport tcp -timeout 10000000 -i rtsp://127.0.0.1:8554/i150200700_586_2_135_lpr_1 -f segment -segment_time 10 -segment_format mp4 -reset_timestamps 1 -strftime 1 -c:v copy -c:a aac /tmp/cache/i150200700_586_2_135_lpr@%Y%m%d%H%M%S%z.mp4 -r 3 -vf fps=3,scale=640:360 -threads 2 -f rawvideo -pix_fmt yuv420p pipe:
+root       46478 15.8  0.0 988192 55308 ?        Ssl  12:12  49:34 /usr/lib/ffmpeg/8.0/bin/ffmpeg -hide_banner -loglevel warning -threads 2 -user_agent FFmpeg SecureVu/0.18.0-6fac0cd -rtsp_transport tcp -timeout 10000000 -i rtsp://127.0.0.1:8554/i150200700_611_4_23_lpr_1 -f segment -segment_time 10 -segment_format mp4 -reset_timestamps 1 -strftime 1 -c:v copy -c:a aac /tmp/cache/i150200700_611_4_23_lpr@%Y%m%d%H%M%S%z.mp4 -r 3 -vf fps=3,scale=640:360 -threads 2 -f rawvideo -pix_fmt yuv420p pipe:
+root       38046 13.4  0.0 1003764 55172 ?       Ssl  12:12  42:03 /usr/lib/ffmpeg/8.0/bin/ffmpeg -hide_banner -loglevel warning -threads 2 -user_agent FFmpeg SecureVu/0.18.0-6fac0cd -rtsp_transport tcp -timeout 10000000 -i rtsp://127.0.0.1:8554/i150200700_603_3_151_lpr_1 -f segment -segment_time 10 -segment_format mp4 -reset_timestamps 1 -strftime 1 -c:v copy -c:a aac /tmp/cache/i150200700_603_3_151_lpr@%Y%m%d%H%M%S%z.mp4 -r 3 -vf fps=3,scale=640:360 -threads 2 -f rawvideo -pix_fmt yuv420p pipe:
+root       28974 12.3  0.0 975168 38372 ?        Ssl  12:12  38:34 /usr/lib/ffmpeg/8.0/bin/ffmpeg -hide_banner -loglevel warning -threads 2 -user_agent FFmpeg SecureVu/0.18.0-6fac0cd -rtsp_transport tcp -timeout 10000000 -i rtsp://127.0.0.1:8554/i150200700_594_3_7_lpr_1 -f segment -segment_time 10 -segment_format mp4 -reset_timestamps 1 -strftime 1 -c:v copy -c:a aac /tmp/cache/i150200700_594_3_7_lpr@%Y%m%d%H%M%S%z.mp4 -r 3 -vf fps=3,scale=640:360 -threads 2 -f rawvideo -pix_fmt yuv420p pipe:
+root       19671 12.1  0.0 975096 39820 ?        Ssl  12:12  37:55 /usr/lib/ffmpeg/8.0/bin/ffmpeg -hide_banner -loglevel warning -threads 2 -user_agent FFmpeg SecureVu/0.18.0-6fac0cd -rtsp_transport tcp -timeout 10000000 -i rtsp://127.0.0.1:8554/i150200700_584_2_103_lpr_1 -f segment -segment_time 10 -segment_format mp4 -reset_timestamps 1 -strftime 1 -c:v copy -c:a aac /tmp/cache/i150200700_584_2_103_lpr@%Y%m%d%H%M%S%z.mp4 -r 3 -vf fps=3,scale=640:360 -threads 2 -f rawvideo -pix_fmt yuv420p pipe:
+root       49308 11.9  0.0 975068 40988 ?        Ssl  12:12  37:12 /usr/lib/ffmpeg/8.0/bin/ffmpeg -hide_banner -loglevel warning -threads 2 -user_agent FFmpeg SecureVu/0.18.0-6fac0cd -rtsp_transport tcp -timeout 10000000 -i rtsp://127.0.0.1:8554/i150200700_613_4_55_lpr_1 -f segment -segment_time 10 -segment_format mp4 -reset_timestamps 1 -strftime 1 -c:v copy -c:a aac /tmp/cache/i150200700_613_4_55_lpr@%Y%m%d%H%M%S%z.mp4 -r 3 -vf fps=3,scale=640:360 -threads 2 -f rawvideo -pix_fmt yuv420p pipe:
+root       44093 11.8  0.0 975152 40548 ?        Ssl  12:12  36:58 /usr/lib/ffmpeg/8.0/bin/ffmpeg -hide_banner -loglevel warning -threads 2 -user_agent FFmpeg SecureVu/0.18.0-6fac0cd -rtsp_transport tcp -timeout 10000000 -i rtsp://127.0.0.1:8554/i150200700_609_3_247_lpr_1 -f segment -segment_time 10 -segment_format mp4 -reset_timestamps 1 -strftime 1 -c:v copy -c:a aac /tmp/cache/i150200700_609_3_247_lpr@%Y%m%d%H%M%S%z.mp4 -r 3 -vf fps=3,scale=640:360 -threads 2 -f rawvideo -pix_fmt yuv420p pipe:
+root       47991 11.6  0.0 975184 38736 ?        Ssl  12:12  36:23 /usr/lib/ffmpeg/8.0/bin/ffmpeg -hide_banner -loglevel warning -threads 2 -user_agent FFmpeg SecureVu/0.18.0-6fac0cd -rtsp_transport tcp -timeout 10000000 -i rtsp://127.0.0.1:8554/i150200700_612_4_39_lpr_1 -f segment -segment_time 10 -segment_format mp4 -reset_timestamps 1 -strftime 1 -c:v copy -c:a aac /tmp/cache/i150200700_612_4_39_lpr@%Y%m%d%H%M%S%z.mp4 -r 3 -vf fps=3,scale=640:360 -threads 2 -f rawvideo -pix_fmt yuv420p pipe:
+root     1221483 11.3  0.0 975204 36428 ?        Ssl  16:17   7:37 /usr/lib/ffmpeg/8.0/bin/ffmpeg -hide_banner -loglevel warning -threads 2 -user_agent FFmpeg SecureVu/0.18.0-6fac0cd -rtsp_transport tcp -timeout 10000000 -i rtsp://127.0.0.1:8554/i150200700_585_2_119_lpr_1 -f segment -segment_time 10 -segment_format mp4 -reset_timestamps 1 -strftime 1 -c:v copy -c:a aac /tmp/cache/i150200700_585_2_119_lpr@%Y%m%d%H%M%S%z.mp4 -r 3 -vf fps=3,scale=640:360 -threads 2 -f rawvideo -pix_fmt yuv420p pipe:
+=== nginx upstream ===
+client_body_temp
+conf
+fastcgi_temp
+get_nginx_settings.py
+logs
+proxy_temp
+sbin
+scgi_temp
+templates
+uwsgi_temp
