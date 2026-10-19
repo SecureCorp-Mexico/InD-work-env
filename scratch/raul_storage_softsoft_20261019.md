@@ -94,3 +94,9 @@ Gerardo
 1. Field/backhaul for .195 PMI lot (many `172.19.*:554` unreachable from CT102).  
 2. Optional: bump .195 `detect.width/height/fps` from 64×64@1 → 640×360@3 to match peers (detect still disabled).  
 3. Node inventory drift vs old notes: CT108/.201 and CT110/.27 now on **node b `172.20.0.4`** (not c); CT106/.144 on **c**.
+
+## Persist follow-up 2026-10-19 (memory + PMO)
+
+- **PMO:** `python3 pmo_sync.py auth` → HTTP 401 `API key is inactive.` `apply-updates` cannot land. Notes for **2853** (7.3) and **2858** (8.3) left in `~/scratchpad/pmo_pending_updates.json` with `status: pending` + `id` (normalized from `activity_id`).
+- **Memory:** [[project_securevu_fleet]], [[project_camera_map_mh]], [[project_pendientes_2026_07]] updated. Draft reply still **not sent**.
+- **NEXT .195:** restore field RTSP to `172.19.*` (PMI 651–735); optional detect-dim align later.
