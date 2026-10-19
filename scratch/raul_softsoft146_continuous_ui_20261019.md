@@ -34,7 +34,9 @@
 
 ## Draft reply
 
-Outlook **draft created (not sent)** — reply threaded to Raúl, cc Roberto. Explains already-configured continuous + UI vs disk + ask for PMI/hora if specific gap.
+Outlook **draft created (not sent)**  
+**Draft id:** `AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0Au_m3w5KKBk6wKVJ6vYktBQAHINqe9QAA`  
+**Drafts folder** · threaded · to Raúl · cc Roberto — reply threaded to Raúl, cc Roberto. Explains already-configured continuous + UI vs disk + ask for PMI/hora if specific gap.
 
 ## Tools note
 
