@@ -1,0 +1,5 @@
+host=.144 cams 141 fps_gt0 138 p50 3.0 p90 3.1 mean 3.63
+loadavg 24.91 45.16 26.63 10/16136 4087922
+uptime 29441 ver 0.18.0-6fac0cd
+detect {'enabled': False, 'width': 640, 'height': 360, 'fps': 3}
+continuous {'days': 15}

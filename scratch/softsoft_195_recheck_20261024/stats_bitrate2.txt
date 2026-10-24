@@ -1,0 +1,152 @@
+=== stats via docker network ===
+cams 171 fps_gt0 168
+camera_fps p50 1.0 p90 1.2 mean 0.99
+process_fps p50 0.8 mean 0.76
+skipped_fps p50 0.3 mean 0.27 sum 46.4
+detection_enabled_any 0
+uptime 178412 version 0.18.0-6fac0cd
+bottom8 [('i150200700_668_ptz', 0), ('i150200700_733_ptz', 0), ('i150200700_733_bullet', 0), ('i150200700_660_ptz', 0.7), ('i150200700_688_bullet', 0.7), ('i150200700_730_bullet', 0.7), ('i150200700_658_bullet', 0.8), ('i150200700_670_bullet', 0.8)]
+top8 [('i150200700_706_bullet', 1.2), ('i150200700_710_bullet', 1.2), ('i150200700_714_ptz', 1.2), ('i150200700_715_bullet', 1.2), ('i150200700_728_ptz', 1.2), ('i150200700_703_bullet', 1.3), ('i150200700_728_bullet', 1.3), ('i150200700_654_bullet', 1.4)]
+loadavg 172.63 141.92 121.88 171/11422 601744
+=== bitrate main vs sub ===
+[
+  {
+    "cam": "i150200700_651_bullet",
+    "label": "sub102",
+    "ok": true,
+    "w": 640,
+    "h": 360,
+    "codec": "h264",
+    "br": null,
+    "secs": 2.5,
+    "rc": 0,
+    "err": null
+  },
+  {
+    "cam": "i150200700_651_bullet",
+    "label": "main101",
+    "ok": true,
+    "w": 1280,
+    "h": 720,
+    "codec": "hevc",
+    "br": null,
+    "secs": 2.27,
+    "rc": 0,
+    "err": null
+  },
+  {
+    "cam": "i150200700_670_bullet",
+    "label": "sub102",
+    "ok": true,
+    "w": 640,
+    "h": 480,
+    "codec": "h264",
+    "br": null,
+    "secs": 3.83,
+    "rc": 0,
+    "err": null
+  },
+  {
+    "cam": "i150200700_670_bullet",
+    "label": "main101",
+    "ok": true,
+    "w": 2560,
+    "h": 1440,
+    "codec": "hevc",
+    "br": null,
+    "secs": 3.05,
+    "rc": 0,
+    "err": null
+  },
+  {
+    "cam": "i150200700_690_ptz",
+    "label": "sub102",
+    "ok": true,
+    "w": 704,
+    "h": 480,
+    "codec": "h264",
+    "br": null,
+    "secs": 2.09,
+    "rc": 0,
+    "err": null
+  },
+  {
+    "cam": "i150200700_690_ptz",
+    "label": "main101",
+    "ok": true,
+    "w": 2560,
+    "h": 1440,
+    "codec": "h264",
+    "br": null,
+    "secs": 3.5,
+    "rc": 0,
+    "err": null
+  },
+  {
+    "cam": "i150200700_710_bullet",
+    "label": "sub102",
+    "ok": true,
+    "w": 640,
+    "h": 360,
+    "codec": "h264",
+    "br": null,
+    "secs": 2.4,
+    "rc": 0,
+    "err": null
+  },
+  {
+    "cam": "i150200700_710_bullet",
+    "label": "main101",
+    "ok": true,
+    "w": 1280,
+    "h": 720,
+    "codec": "h264",
+    "br": null,
+    "secs": 2.62,
+    "rc": 0,
+    "err": null
+  },
+  {
+    "cam": "i150200700_725_bullet",
+    "label": "sub102",
+    "ok": true,
+    "w": 640,
+    "h": 360,
+    "codec": "hevc",
+    "br": null,
+    "secs": 2.08,
+    "rc": 0,
+    "err": null
+  },
+  {
+    "cam": "i150200700_725_bullet",
+    "label": "main101",
+    "ok": true,
+    "w": 2560,
+    "h": 1440,
+    "codec": "hevc",
+    "br": null,
+    "secs": 5.15,
+    "rc": 0,
+    "err": null
+  }
+]
+=== peer compare go2rtc bytes sample on this host already done ===
+no_route_log_lines 1659 unique_ips 3
+top_ips [('172.19.7.147', 561), ('172.19.11.164', 551), ('172.19.11.163', 547)]
+172.19.7.147 logs 561 probe {'class': 'TIMEOUT', 'ms': 1503.6, 'err': 'timed out'}
+172.19.11.164 logs 551 probe {'class': 'TIMEOUT', 'ms': 1507.6, 'err': 'timed out'}
+172.19.11.163 logs 547 probe {'class': 'TIMEOUT', 'ms': 1506.5, 'err': 'timed out'}
+reachable_but_logged_noroute 0 of 167
+timeout_probe_ips {'172.19.11.164', '172.19.7.147', '172.19.11.163'}
+total 156
+drwxr-xr-x 2 root root   200 Oct 24 17:03 .
+drwxrwxrwt 5 root root   360 Oct 24 17:03 ..
+-rw-r--r-- 1 root root  1966 Oct 24 17:03 bitrate_sample.json
+-rw-r--r-- 1 root root 53863 Oct 24 16:56 cameras.json
+-rw-r--r-- 1 root root 39098 Oct 24 16:56 cam_reach.json
+-rw-r--r-- 1 root root 13599 Oct 24 16:59 ffprobe_sample.json
+-rw-r--r-- 1 root root 15310 Oct 24 16:56 newest_segments.json
+-rw-r--r-- 1 root root 11155 Oct 24 16:56 probes_by_ip.json
+-rw-r--r-- 1 root root  5599 Oct 24 16:56 report.json
+-rw-r--r-- 1 root root  2400 Oct 24 16:56 SUMMARY.txt

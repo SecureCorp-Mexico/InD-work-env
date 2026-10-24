@@ -1,0 +1,12 @@
+=== login 8971 ===
+{"cameras":{"i150200700_651_ptz":{"camera_fps":1.2,"process_fps":0.7,"skipped_fps":0.4,"detection_fps":0.0,"detection_enabled":false,"pid":10829,"capture_pid":10872,"ffmpeg_pid":951033,"audio_rms":0,"
+code=000 t=0.002282
+no_stats
+=== maintainer warning counts last 2h docker ===
+700
+too_many_unprocessed=257
+no_route=1659
+watchdog_crash=1204
+no_new_valid=0
+bash: line 40: syntax error near unexpected token `('
+bash: line 40: `echo === ffprobe field main vs sub (5 cams) ==='

@@ -1,0 +1,87 @@
+probed i150200700_651_bullet local_ok=False NonexNone br=None
+probed i150200700_657_ptz local_ok=False NonexNone br=None
+probed i150200700_664_ptz local_ok=False NonexNone br=None
+probed i150200700_672_bullet local_ok=False NonexNone br=None
+probed i150200700_679_bullet local_ok=False NonexNone br=None
+probed i150200700_686_bullet local_ok=False NonexNone br=None
+probed i150200700_693_bullet local_ok=False NonexNone br=None
+probed i150200700_700_bullet local_ok=False NonexNone br=None
+probed i150200700_707_bullet local_ok=False NonexNone br=None
+probed i150200700_714_bullet local_ok=False NonexNone br=None
+probed i150200700_721_bullet local_ok=False NonexNone br=None
+probed i150200700_728_bullet local_ok=False NonexNone br=None
+{
+  "n": 12,
+  "go2rtc_api": {
+    "streams_total": 342,
+    "streams_ending_1": 171,
+    "with_consumers": 167,
+    "bytes_recv_gt0_approx": 167,
+    "sample": [
+      {
+        "name": "i150200700_651_bullet_1",
+        "raw_keys": [
+          "producers",
+          "consumers"
+        ],
+        "recv": 162036628
+      },
+      {
+        "name": "i150200700_651_ptz_1",
+        "raw_keys": [
+          "producers",
+          "consumers"
+        ],
+        "recv": 124095048
+      },
+      {
+        "name": "i150200700_652_bullet_1",
+        "raw_keys": [
+          "producers",
+          "consumers"
+        ],
+        "recv": 98697124
+      },
+      {
+        "name": "i150200700_652_ptz_1",
+        "raw_keys": [
+          "producers",
+          "consumers"
+        ],
+        "recv": 218220796
+      },
+      {
+        "name": "i150200700_653_bullet_1",
+        "raw_keys": [
+          "producers",
+          "consumers"
+        ],
+        "recv": 254961300
+      },
+      {
+        "name": "i150200700_653_ptz_1",
+        "raw_keys": [
+          "producers",
+          "consumers"
+        ],
+        "recv": 434383584
+      },
+      {
+        "name": "i150200700_654_bullet_1",
+        "raw_keys": [
+          "producers",
+          "consumers"
+        ],
+        "recv": 141795636
+      },
+      {
+        "name": "i150200700_654_ptz_1",
+        "raw_keys": [
+          "producers",
+          "consumers"
+        ],
+        "recv": 166079748
+      }
+    ]
+  }
+}

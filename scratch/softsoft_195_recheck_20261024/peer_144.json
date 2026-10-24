@@ -1,0 +1,32 @@
+{
+  "ts": "2026-10-24T22:57:16Z",
+  "hostname": "mxmhvmsl00004",
+  "knobs": {
+    "continuous.days": 15,
+    "detect.enabled": false,
+    "detect.wh_fps": [
+      640,
+      360,
+      3
+    ],
+    "hwaccel": [],
+    "cameras": 141,
+    "go2rtc": 282,
+    "detect_64x64": 0,
+    "record_ch102": 15,
+    "record_ch101": 0
+  },
+  "write": {
+    "hour_mb": 20764.6,
+    "growth_15s": 120665239,
+    "gb_h_est": 26.971,
+    "today_gb": 457.92,
+    "gb_h_today": 19.953,
+    "cams_mp4_5m": 137,
+    "cams_today": 138,
+    "seg_p50": 344893.5,
+    "seg_p90": 732699.5999999999,
+    "age_p50": 22.78120267391205,
+    "age_p90": 27.989939475059508
+  }
+}

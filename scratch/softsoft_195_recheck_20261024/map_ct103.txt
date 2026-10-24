@@ -1,0 +1,18 @@
+=== map stamp ===
+=== .195 :8972 health ===
+{"ok": true, "recordings": "/securevu/recordings", "exists": true}
+{"ok": true, "recordings": "/securevu/recordings", "exists": true}
+=== discover :8972 paths ===
+/ -> 200 {"ok": true, "recordings": "/securevu/recordings", "exists": true}
+/health -> 200 {"ok": true, "recordings": "/securevu/recordings", "exists": true}
+/api/health -> 404 {"error":"not found"}
+/openapi.json -> 404 {"error":"not found"}
+/docs -> 404 {"error":"not found"}
+/coverage -> 404 {"error":"not found"}
+/api/coverage -> 404 {"error":"not found"}
+/summary -> 404 {"error":"not found"}
+/api/summary -> 404 {"error":"not found"}
+/disk -> 404 {"error":"not found"}
+/api/disk -> 404 {"error":"not found"}
+=== map code hints ===
+=== probe known streams via likely API ===

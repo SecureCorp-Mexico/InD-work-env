@@ -1,0 +1,71 @@
+=== which ===
+/bin/ffprobe
+=== ffprobe local go2rtc ===
+[rtsp @ 0x555df08ad280] method SETUP failed: 461Unsupported transport
+{
+    "programs": [
+
+    ],
+    "stream_groups": [
+
+    ],
+    "streams": [
+        {
+            "codec_name": "h264",
+            "width": 640,
+            "height": 360
+        }
+    ],
+    "format": {
+
+    }
+}
+=== docker ffprobe local ===
+timeout: failed to run command 'ffprobe': No such file or directory
+=== stats ===
+http=000 time=0.003026
+stats_parse [Errno 2] No such file or directory: '/tmp/sv_stats.json'
+=== recent record logs ===
+2026-10-24 17:00:06.419634583  [2026-10-23 10:43:44] ffmpeg.i150200700_733_ptz.detect ERROR   : Error opening input file rtsp://127.0.0.1:8554/i150200700_733_ptz_1.
+2026-10-24 17:00:08.406095686  [2026-10-23 10:43:44] securevu.record.maintainer     WARNING : Too many unprocessed recording segments in cache for i150200700_664_bullet. This likely indicates an issue with the detect stream, keeping the 6 most recent segments out of 26 and discarding the rest...
+2026-10-24 17:00:08.594870452  17:00:08.583 WRN [rtsp] error="streams: dial tcp 172.19.11.164:554: connect: no route to host" stream=i150200700_733_bullet_1
+2026-10-24 17:00:08.595494484  17:00:08.580 WRN [rtsp] error="streams: dial tcp 172.19.11.163:554: connect: no route to host" stream=i150200700_733_ptz_1
+2026-10-24 17:00:09.423507975  [2026-10-23 10:43:44] ffmpeg.i150200700_733_ptz.detect ERROR   : Error opening input files: Server returned 404 Not Found
+2026-10-24 17:00:10.486066118  [2026-10-23 10:43:45] watchdog.i150200700_733_bullet ERROR   : Ffmpeg process crashed unexpectedly for i150200700_733_bullet.
+2026-10-24 17:00:10.612942002  17:00:10.609 WRN [rtsp] error="streams: dial tcp 172.19.7.147:554: connect: no route to host" stream=i150200700_668_ptz_1
+2026-10-24 17:00:11.313604357  [2026-10-23 10:43:45] watchdog.i150200700_733_ptz    INFO    : Restarting ffmpeg...
+2026-10-24 17:00:12.066484665  [2026-10-23 10:43:44] securevu.record.maintainer     WARNING : Unable to keep up with recording segments in cache for i150200700_664_ptz. Keeping the 6 most recent segments out of 8 and discarding the rest...
+2026-10-24 17:00:14.779519629  [2026-10-23 10:43:45] securevu.record.maintainer     WARNING : Unable to keep up with recording segments in cache for i150200700_663_ptz. Keeping the 6 most recent segments out of 8 and discarding the rest...
+2026-10-24 17:00:16.409737448  [2026-10-23 10:43:45] securevu.record.maintainer     WARNING : Too many unprocessed recording segments in cache for i150200700_711_ptz. This likely indicates an issue with the detect stream, keeping the 6 most recent segments out of 27 and discarding the rest...
+2026-10-24 17:00:17.309007083  [2026-10-23 10:43:46] securevu.record.maintainer     WARNING : Too many unprocessed recording segments in cache for i150200700_673_ptz. This likely indicates an issue with the detect stream, keeping the 6 most recent segments out of 26 and discarding the rest...
+2026-10-24 17:00:17.850860140  [2026-10-23 10:43:46] watchdog.i150200700_668_ptz    ERROR   : Ffmpeg process crashed unexpectedly for i150200700_668_ptz.
+2026-10-24 17:00:18.485736744  [2026-10-23 10:43:46] securevu.record.maintainer     WARNING : Unable to keep up with recording segments in cache for i150200700_678_ptz. Keeping the 6 most recent segments out of 8 and discarding the rest...
+2026-10-24 17:00:19.531040838  [2026-10-23 10:43:47] securevu.record.maintainer     WARNING : Unable to keep up with recording segments in cache for i150200700_732_bullet. Keeping the 6 most recent segments out of 35 and discarding the rest...
+2026-10-24 17:00:20.835671869  [2026-10-23 10:43:47] securevu.record.maintainer     WARNING : Unable to keep up with recording segments in cache for i150200700_710_ptz. Keeping the 6 most recent segments out of 7 and discarding the rest...
+2026-10-24 17:00:21.393350523  17:00:21.391 WRN [rtsp] error="streams: dial tcp 172.19.11.163:554: connect: no route to host" stream=i150200700_733_ptz_1
+2026-10-24 17:00:21.404708200  17:00:21.390 WRN [rtsp] error="streams: dial tcp 172.19.11.164:554: connect: no route to host" stream=i150200700_733_bullet_1
+2026-10-24 17:00:21.728813827  17:00:21.724 WRN [rtsp] error="streams: dial tcp 172.19.7.147:554: connect: no route to host" stream=i150200700_668_ptz_1
+2026-10-24 17:00:21.981813092  [2026-10-23 10:43:47] watchdog.i150200700_733_bullet ERROR   : Ffmpeg process crashed unexpectedly for i150200700_733_bullet.
+2026-10-24 17:00:24.382588523  [2026-10-23 10:43:47] securevu.record.maintainer     WARNING : Unable to keep up with recording segments in cache for i150200700_674_bullet. Keeping the 6 most recent segments out of 8 and discarding the rest...
+2026-10-24 17:00:25.329559440  [2026-10-23 10:43:48] securevu.record.maintainer     WARNING : Unable to keep up with recording segments in cache for i150200700_685_bullet. Keeping the 6 most recent segments out of 8 and discarding the rest...
+2026-10-24 17:00:26.570025113  [2026-10-23 10:43:48] securevu.record.maintainer     WARNING : Unable to keep up with recording segments in cache for i150200700_686_ptz. Keeping the 6 most recent segments out of 8 and discarding the rest...
+2026-10-24 17:00:27.960152326  [2026-10-23 10:43:48] watchdog.i150200700_668_ptz    ERROR   : Ffmpeg process crashed unexpectedly for i150200700_668_ptz.
+2026-10-24 17:00:28.734734546  [2026-10-23 10:43:48] watchdog.i150200700_733_ptz    INFO    : No frames received from i150200700_733_ptz in 20 seconds. Exiting ffmpeg...
+2026-10-24 17:00:29.645530664  [2026-10-23 10:43:49] securevu.record.maintainer     WARNING : Unable to keep up with recording segments in cache for i150200700_714_ptz. Keeping the 6 most recent segments out of 8 and discarding the rest...
+2026-10-24 17:00:30.636908276  [2026-10-23 10:43:49] securevu.record.maintainer     WARNING : Too many unprocessed recording segments in cache for i150200700_681_ptz. This likely indicates an issue with the detect stream, keeping the 6 most recent segments out of 25 and discarding the rest...
+2026-10-24 17:00:31.758670231  [2026-10-23 10:43:49] securevu.video.ffmpeg          ERROR   : i150200700_733_ptz: Unable to read frames from ffmpeg process.
+2026-10-24 17:00:32.063056649  [2026-10-23 10:43:49] watchdog.i150200700_733_bullet ERROR   : Ffmpeg process crashed unexpectedly for i150200700_733_bullet.
+2026-10-24 17:00:32.117973911  17:00:32.114 WRN [rtsp] error="streams: dial tcp 172.19.11.164:554: connect: no route to host" stream=i150200700_733_bullet_1
+2026-10-24 17:00:32.118561645  17:00:32.115 WRN [rtsp] error="streams: dial tcp 172.19.11.163:554: connect: no route to host" stream=i150200700_733_ptz_1
+2026-10-24 17:00:33.329001015  [2026-10-23 10:43:49] watchdog.i150200700_733_bullet ERROR   : The following ffmpeg logs include the last 100 lines prior to exit.
+2026-10-24 17:00:33.738665272  17:00:33.734 WRN [rtsp] error="streams: dial tcp 172.19.7.147:554: connect: no route to host" stream=i150200700_668_ptz_1
+2026-10-24 17:00:34.044956898  [2026-10-23 10:43:49] securevu.record.maintainer     WARNING : Unable to keep up with recording segments in cache for i150200700_712_bullet. Keeping the 6 most recent segments out of 9 and discarding the rest...
+2026-10-24 17:00:36.936081093  [2026-10-23 10:43:49] ffmpeg.i150200700_733_bullet.detect ERROR   : [in#0 @ 0x620c4684ec80] method DESCRIBE failed: 404 (Not Found)
+2026-10-24 17:00:37.924837673  [2026-10-23 10:43:49] securevu.video.ffmpeg          ERROR   : i150200700_733_ptz: ffmpeg process is not running. exiting capture thread...
+2026-10-24 17:00:38.608754183  [2026-10-23 10:43:50] ffmpeg.i150200700_733_bullet.detect ERROR   : [in#0 @ 0x620c4684e980] Error opening input: Server returned 404 Not Found
+2026-10-24 17:00:39.903894864  [2026-10-23 10:43:49] watchdog.i150200700_668_ptz    ERROR   : The following ffmpeg logs include the last 100 lines prior to exit.
+2026-10-24 17:00:40.943342079  [2026-10-23 10:43:50] ffmpeg.i150200700_668_ptz.detect ERROR   : [in#0 @ 0x5b3ba220ec80] method DESCRIBE failed: 404 (Not Found)
+2026-10-24 17:00:42.450781569  [2026-10-23 10:43:49] securevu.record.maintainer     WARNING : Unable to keep up with recording segments in cache for i150200700_692_bullet. Keeping the 6 most recent segments out of 8 and discarding the rest...
+=== mp4 age bands ===
+bands_by_hour_dirs_not_unique {'gt60m': 3453, '1-5m': 21, '15-60m': 92, '5-15m': 53, 'lt1m': 3}
+active_lt2m_samples [('i150200700_721_ptz', 85.0, 550113), ('i150200700_684_bullet', 118.6, 614311), ('i150200700_721_bullet', 90.6, 301615), ('i150200700_672_bullet', 103.3, 696587), ('i150200700_717_bullet', 59.8, 249415), ('i150200700_696_ptz', 49.2, 419451), ('i150200700_687_ptz', 92.5, 821853), ('i150200700_673_ptz', 52.7, 570401)] n 8
