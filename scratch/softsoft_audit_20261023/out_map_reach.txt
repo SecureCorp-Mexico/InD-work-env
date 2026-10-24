@@ -1,0 +1,54 @@
+=== reach from CT103 host ===
+/bin/curl
+/bin/python3
+172.20.0.144 :8972 health curl: (7) Failed to connect to 172.20.0.144 port 8972 after 0 ms: Couldn't connect to server
+
+172.20.0.144 :8971 login code=200 t=0.225476
+172.20.0.146 :8972 health {"ok": true, "recordings": "/securevu/recordings", "exists": true}
+172.20.0.146 :8971 login code=200 t=0.272846
+172.20.0.195 :8972 health curl: (7) Failed to connect to 172.20.0.195 port 8972 after 1 ms: Couldn't connect to server
+
+172.20.0.195 :8971 login code=200 t=1.170697
+172.20.0.201 :8972 health curl: (7) Failed to connect to 172.20.0.201 port 8972 after 0 ms: Couldn't connect to server
+
+172.20.0.201 :8971 login code=200 t=0.232067
+172.20.0.27 :8972 health curl: (7) Failed to connect to 172.20.0.27 port 8972 after 0 ms: Couldn't connect to server
+
+172.20.0.27 :8971 login code=200 t=0.251895
+=== SUMMARY 172.20.0.146 i150200700_579_2_24_bullet ===
+disk: code=200 t=1.500007
+disk_keys_sample <class 'list'>
+sv_token_len=0 summary: NO_TOKEN
+=== SUMMARY 172.20.0.146 i150200700_610_4_6_ptz ===
+disk: code=200 t=1.073098
+disk_keys_sample <class 'list'>
+sv_token_len=0 summary: NO_TOKEN
+=== SUMMARY 172.20.0.146 i150200700_578_2_10_bullet ===
+disk: code=200 t=1.490487
+disk_keys_sample <class 'list'>
+sv_token_len=0 summary: NO_TOKEN
+=== SUMMARY 172.20.0.195 i150200700_651_bullet ===
+disk: curl: (7) Failed to connect to 172.20.0.195 port 8972 after 0 ms: Couldn't connect to server
+code=000 t=0.000689
+disk_keys_sample <class 'list'>
+sv_token_len=0 summary: NO_TOKEN
+=== SUMMARY 172.20.0.195 i150200700_654_bullet ===
+disk: curl: (7) Failed to connect to 172.20.0.195 port 8972 after 0 ms: Couldn't connect to server
+code=000 t=0.000894
+disk_keys_sample <class 'list'>
+sv_token_len=0 summary: NO_TOKEN
+=== SUMMARY 172.20.0.144 i150200700_557_1_22_bullet ===
+disk: curl: (7) Failed to connect to 172.20.0.144 port 8972 after 0 ms: Couldn't connect to server
+code=000 t=0.000262
+disk_keys_sample <class 'list'>
+sv_token_len=0 summary: NO_TOKEN
+=== SUMMARY 172.20.0.201 i150200700_625_4_227_ptz ===
+disk: curl: (7) Failed to connect to 172.20.0.201 port 8972 after 0 ms: Couldn't connect to server
+code=000 t=0.000171
+disk_keys_sample <class 'list'>
+sv_token_len=0 summary: NO_TOKEN
+=== SUMMARY 172.20.0.27 i150200700_469_11_216_ch1 ===
+disk: curl: (7) Failed to connect to 172.20.0.27 port 8972 after 0 ms: Couldn't connect to server
+code=000 t=0.000184
+disk_keys_sample <class 'list'>
+sv_token_len=0 summary: NO_TOKEN

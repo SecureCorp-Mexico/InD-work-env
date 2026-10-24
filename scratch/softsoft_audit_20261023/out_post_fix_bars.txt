@@ -1,0 +1,14 @@
+=== POST-FIX disk health + sample bars 2026-10-24T02:37:44Z ===
+172.20.0.144 :8972 {"ok": true, "recordings": "/securevu/recordings", "exists": true}
+172.20.0.146 :8972 {"ok": true, "recordings": "/securevu/recordings", "exists": true}
+172.20.0.195 :8972 {"ok": true, "recordings": "/securevu/recordings", "exists": true}
+172.20.0.201 :8972 {"ok": true, "recordings": "/securevu/recordings", "exists": true}
+172.20.0.27 :8972 {"ok": true, "recordings": "/securevu/recordings", "exists": true}
+DISK 172.20.0.146 i150200700_579_2_24_bullet code=200 t=0.017379 last6_pos=6/6 ratios=[0.61, 0.97, 0.98, 0.99, 0.97, 0.98]
+DISK 172.20.0.146 i150200700_610_4_6_ptz code=200 t=0.013135 last6_pos=6/6 ratios=[0.61, 0.99, 0.99, 0.97, 0.98, 0.97]
+DISK 172.20.0.146 i150200700_578_2_10_bullet code=200 t=0.022242 last6_pos=6/6 ratios=[0.61, 0.98, 0.99, 0.97, 0.98, 0.97]
+DISK 172.20.0.195 i150200700_651_bullet code=200 t=0.221569 last6_pos=6/6 ratios=[0.03, 0.04, 0.06, 0.03, 0.06, 0.01]
+DISK 172.20.0.195 i150200700_654_bullet code=200 t=0.267490 last6_pos=6/6 ratios=[0.05, 0.05, 0.06, 0.07, 0.06, 0.07]
+DISK 172.20.0.144 i150200700_557_1_22_bullet code=200 t=19.783988 last6_pos=6/6 ratios=[0.63, 0.99, 0.99, 0.99, 1.0, 1.0]
+DISK 172.20.0.201 i150200700_625_4_227_ptz code=200 t=0.535524 last6_pos=6/6 ratios=[0.63, 1.0, 1.0, 1.0, 1.0, 1.0]
+DISK 172.20.0.27 i150200700_469_11_216_ch1 code=200 t=0.210998 last6_pos=6/6 ratios=[0.63, 1.0, 1.0, 1.0, 1.0, 1.0]

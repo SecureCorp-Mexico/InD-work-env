@@ -1,0 +1,85 @@
+=== MAP DETAIL 2026-10-24T02:27:03Z ===
+ADMIN_PASSWORD=***REDACTED***
+DATA_DIR=/data
+EDGE_PROBE_CONCURRENCY=8
+EDGE_PROBE_ENABLED=true
+EDGE_PROBE_INTERVAL_MS=600000
+FS_API_KEY=***REDACTED***
+GOOGLE_CLIENT_SECRET=***REDACTED***
+HOME=/root
+HOSTNAME=f8e6b104d192
+HOWEN_PASS=***REDACTED***
+MQTT_PASS=***REDACTED***
+MQTT_URL=mqtt://mqtt:1883
+MQTT_USER=securevu
+MS_CLIENT_SECRET=***REDACTED***
+NODE_ENV=production
+NODE_VERSION=22.23.3
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PWD=/opt/securevu-map
+STATUS_CONFIRM=3
+SV_API_PASS=***REDACTED***
+SV_API_USER=admin
+SV_DISK_SUMMARY_PORT=8972
+SV_TLS_INSECURE=true
+TRACCAR_PASS=***REDACTED***
+TZ=America/Mexico_City
+UCM_API_PASS=***REDACTED***
+UCM_API_USER=SecureVu
+UCM_TLS_INSECURE=true
+YARN_VERSION=1.22.22
+alarms.db
+alarms.db-shm
+alarms.db-wal
+audit.db
+audit.db-shm
+audit.db-wal
+backups
+cameras.geojson
+chat.db
+chat.db-shm
+--- web stamp ---
+50x.html
+admin.html
+alarm-chime.wav
+alarm-video.html
+assets
+detection-video.html
+detections.html
+downloads.html
+export-video.html
+favicon.png
+/* SecureVu Map PWA — v117: disk-summary fallback when Soft Soft :8971 wedged. */
+const CACHE = 'svmap-shell-v117-disk-summary-fallback-20261019';
+v107-vw-fit-fill-20260908
+v113-731-732-ip-collision-20260925
+v117-disk-summary-fallback-20261019
+--- host stamp files ---
+/opt/securevu-map/node_modules/better-sqlite3/build/Release/obj.target/deps/locate_sqlite3.stamp
+/opt/securevu-map/node_modules/better-sqlite3/build/Release/.deps/Release/obj.target/deps/locate_sqlite3.stamp.d
+total 312
+drwxr-xr-x 3  501 staff   4096 Jul  6 17:52 .
+drwxr-xr-x 4 root root    4096 Jun 10 00:29 ..
+-rwxr-xr-x 1  501 staff    163 Jul  6 17:52 ._.
+-rw-r--r-- 1  501 staff    163 Jul  6 17:52 ._admin.html
+-rwxr-xr-x 1  501 staff    163 Jul  6 17:52 ._assets
+-rwx------ 1  501 staff    163 Jul  6 17:52 ._favicon.png
+-rw-r--r-- 1  501 staff    163 Jul  6 17:52 ._guia.html
+-rw-r--r-- 1  501 staff    163 Jul  6 17:52 ._index.html
+-rw-r--r-- 1  501 staff    163 Jul  6 17:52 ._login.html
+--- softsoft :8972 from map ---
+172.20.0.144 :8972 OCI runtime exec failed: exec failed: unable to start container process: exec: "wget": executable file not found in $PATH
+
+172.20.0.144 :8971 login sh: 1: curl: not found
+172.20.0.146 :8972 OCI runtime exec failed: exec failed: unable to start container process: exec: "wget": executable file not found in $PATH
+
+172.20.0.146 :8971 login sh: 1: curl: not found
+172.20.0.195 :8972 OCI runtime exec failed: exec failed: unable to start container process: exec: "wget": executable file not found in $PATH
+
+172.20.0.195 :8971 login sh: 1: curl: not found
+172.20.0.201 :8972 OCI runtime exec failed: exec failed: unable to start container process: exec: "wget": executable file not found in $PATH
+
+172.20.0.201 :8971 login sh: 1: curl: not found
+172.20.0.27 :8972 OCI runtime exec failed: exec failed: unable to start container process: exec: "wget": executable file not found in $PATH
+
+172.20.0.27 :8971 login sh: 1: curl: not found

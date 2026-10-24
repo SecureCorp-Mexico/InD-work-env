@@ -1,0 +1,15 @@
+===== INSTALL disk-summary via 172.20.0.4 pct 110 (27) =====
+● sv-disk-summary.service - SecureVu disk recordings/summary (Map fallback)
+     Loaded: loaded (/etc/systemd/system/sv-disk-summary.service; enabled; preset: enabled)
+     Active: active (running) since Fri 2026-10-23 20:36:18 CST; 1s ago
+   Main PID: 2372994 (python3)
+      Tasks: 1 (limit: 154308)
+     Memory: 17.9M
+        CPU: 81ms
+     CGroup: /system.slice/sv-disk-summary.service
+             └─2372994 /usr/bin/python3 -u /opt/sv-disk-summary/server.py
+
+Oct 23 20:36:18 mxmhvmsl00006 systemd[1]: Started sv-disk-summary.service - SecureVu disk recordings/summary (Map fallback).
+Oct 23 20:36:18 mxmhvmsl00006 python3[2372994]: sv-disk-summary listening :8972 root=/securevu/recordings seg=10s
+{"ok": true, "recordings": "/securevu/recordings", "exists": true}
+{"ok": true, "recordings": "/securevu/recordings", "exists": true}

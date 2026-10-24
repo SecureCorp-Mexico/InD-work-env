@@ -1,0 +1,62 @@
+=== Soft Soft guest audit 201 2026-10-24T02:17:51Z ===
+hostname=mxmhvmsl00005
+ip=172.20.0.201
+--- docker securevu ---
+name=securevu status=Up 4 days (healthy) image=ghcr.io/securecorp-mexico/securevu2:stable-tensorrt
+health=healthy started=2026-10-19T16:21:21.584801991Z restarting=false
+--- df mounts ---
+Filesystem                        Size  Used Avail Use% Mounted on
+/dev/mapper/pve-vm--108--disk--0  492G  104G  363G  23% /
+HDDStorage01/subvol-108-disk-0    9.8T  7.9T  2.0T  80% /securevu
+/dev/mapper/pve-vm--108--disk--0  492G  104G  363G  23% /
+HDDStorage01/subvol-108-disk-0 on /securevu type zfs (rw,relatime,xattr,posixacl,casesensitive)
+drwxr-xr-x  6 root root  6 Sep 20 11:40 /securevu
+drwxr-xr-x 40 root root 40 Oct 23 18:00 /securevu/recordings
+--- compose bind ---
+    image: ghcr.io/securecorp-mexico/securevu2:stable-tensorrt
+      - /securevu:/media/securevu
+--- record.continuous.days ---
+--- :8971 login latency ---
+login https://127.0.0.1:8971/api/login code=200 ms=275 body=
+login http://127.0.0.1:5000/api/login code=000ERR ms=11 body=
+--- :8972 disk-summary ---
+inactive
+LISTEN 0      4096         0.0.0.0:8971      0.0.0.0:*    users:(("docker-proxy",pid=3528510,fd=8))            
+LISTEN 0      4096            [::]:8971         [::]:*    users:(("docker-proxy",pid=3528517,fd=8))            
+
+
+--- today's hour folders ---
+REC=/securevu/recordings TODAY=2026-10-24 HH=02
+hour_dir cams=107 size=4.3G path=/securevu/recordings/2026-10-24/02
+--- GB/h growth sample (~45s) ---
+bytes_t0=4357853424 bytes_t45=4538611493 delta=180758069 est_GB_per_h=14.46
+--- newest mp4 ages (sample 12) ---
+sort: write failed: 'standard output': Broken pipe
+sort: write error
+age_s=4 /securevu/recordings/2026-10-24/02/i150200700_625_4_227_ptz/18.17.mp4
+age_s=4 /securevu/recordings/2026-10-24/02/i150200700_629_5_37_bullet02/18.17.mp4
+age_s=4 /securevu/recordings/2026-10-24/02/i150200700_629_5_36_bullet01/18.17.mp4
+age_s=4 /securevu/recordings/2026-10-24/02/i150200700_626_4_243_ptz/18.17.mp4
+age_s=4 /securevu/recordings/2026-10-24/02/i150200700_649_6_102_bullet03/18.17.mp4
+age_s=4 /securevu/recordings/2026-10-24/02/i150200700_632_5_83_ptz/18.17.mp4
+age_s=4 /securevu/recordings/2026-10-24/02/i150200700_634_5_115_ptz/18.17.mp4
+age_s=4 /securevu/recordings/2026-10-24/02/i150200700_623_4_195_ptz/18.18.mp4
+age_s=4 /securevu/recordings/2026-10-24/02/i150200700_643_6_5_bullet02/18.18.mp4
+age_s=4 /securevu/recordings/2026-10-24/02/i150200700_644_6_21_bullet02/18.18.mp4
+age_s=4 /securevu/recordings/2026-10-24/02/i150200700_643_6_4_bullet01/18.18.mp4
+age_s=4 /securevu/recordings/2026-10-24/02/i150200700_643_6_6_bullet03/18.18.mp4
+--- No new valid recording segments (recent logs) ---
+0
+count_fail
+--- fps>0 via stats (if API works) ---
+login2=200
+stats=200 time=0.026570
+stats_wall_ms=39
+stats_cameras=110 fps_gt0=107 fps_eq0=3
+detectors {'ONNX_0': 10.0}
+version 0.18.0-6fac0cd uptime 381769
+--- go2rtc producers with bytes (sample) ---
+go2rtc_streams=220 with_bytes_recv=107
+go2rtc_suffix_1=110 with_bytes=107
+AUDIT_DONE 201
+cat: /tmp/ss_audit_201.txt: input file is output file

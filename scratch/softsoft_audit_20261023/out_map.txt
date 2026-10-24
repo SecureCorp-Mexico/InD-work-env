@@ -1,0 +1,14 @@
+=== MAP CT103 2026-10-24T02:22:18Z ===
+mxmhappl00004
+172.20.0.9 172.17.0.1 172.18.0.1 
+--- stamp / version ---
+DIR /var/www
+camera-map
+html
+securevu-map-src-web-1 Up 4 days ghcr.io/securecorp-mexico/securevu-map-web:latest
+securevu-map-src-api-1 Up 4 days ghcr.io/securecorp-mexico/securevu-map-api:latest
+securevu-map-src-mqtt-1 Up 4 days eclipse-mosquitto:2
+--- env stamp ---
+API_CTR=securevu-map-src-web-1
+NGINX_VERSION=1.27.5
+NJS_VERSION=0.8.10

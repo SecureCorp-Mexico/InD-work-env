@@ -1,0 +1,27 @@
+=== ZFS snapshot 2026-10-24T02:38:46Z ===
+----- 172.20.0.2 -----
+mxmhvhstl00001a
+NAME           SIZE  ALLOC   FREE  CKPOINT  EXPANDSZ   FRAG    CAP  DEDUP    HEALTH  ALTROOT
+HDDStorage01  36.4T  1.96T  34.4T        -         -    25%     5%  1.00x    ONLINE  -
+NAME                             USED  AVAIL  REFER  QUOTA  REFQUOTA  MOUNTPOINT
+HDDStorage01                    1.57T  27.4T   192K   none      none  /HDDStorage01
+HDDStorage01/subvol-102-disk-0  1.56T  14.1T  1.56T   none     15.6T  /HDDStorage01/subvol-102-disk-0
+NVMeStorage1/subvol-102-disk-0   127G   373G   127G   none      500G  /NVMeStorage1/subvol-102-disk-0
+----- 172.20.0.4 -----
+mxmhvhstl00001b
+NAME           SIZE  ALLOC   FREE  CKPOINT  EXPANDSZ   FRAG    CAP  DEDUP    HEALTH  ALTROOT
+HDDStorage01  43.7T  12.8T  30.9T        -         -    31%    29%  1.00x    ONLINE  -
+NAME                             USED  AVAIL  REFER  QUOTA  REFQUOTA  MOUNTPOINT
+HDDStorage01                    8.52T  20.4T   139K   none      none  /HDDStorage01
+HDDStorage01/subvol-108-disk-0  7.80T  1.96T  7.80T   none     9.77T  /HDDStorage01/subvol-108-disk-0
+HDDStorage01/subvol-110-disk-0   725G  7.10T   725G   none     7.81T  /HDDStorage01/subvol-110-disk-0
+----- 172.20.0.5 -----
+mxmhvhstl00001c
+NAME           SIZE  ALLOC   FREE  CKPOINT  EXPANDSZ   FRAG    CAP  DEDUP    HEALTH  ALTROOT
+HDDStorage01  36.4T  27.8T  8.60T        -         -    54%    76%  1.00x    ONLINE  -
+NAME                             USED  AVAIL  REFER  QUOTA  REFQUOTA  MOUNTPOINT
+HDDStorage01                    20.2T  6.12T   186K   none      none  /HDDStorage01
+HDDStorage01/subvol-105-disk-0  12.9T  2.75T  12.9T   none     15.6T  /HDDStorage01/subvol-105-disk-0
+HDDStorage01/subvol-106-disk-0  7.30T  2.46T  7.30T   none     9.77T  /HDDStorage01/subvol-106-disk-0
+NVMeStorage1/subvol-105-disk-0  79.2G   421G  79.2G   none      500G  /NVMeStorage1/subvol-105-disk-0
+NVMeStorage1/subvol-106-disk-0  95.7G   404G  95.7G   none      500G  /NVMeStorage1/subvol-106-disk-0
